@@ -1,10 +1,14 @@
 group: edge
+
 language: node_js
+
 node_js:
   - 6
   - 7
   - 8
+
 install: true
+
 before_install:
   - export CHROME_BIN=/usr/bin/google-chrome
   - export DISPLAY=:99.0
@@ -13,8 +17,10 @@ before_install:
   - sudo apt install -y libappindicator1 fonts-liberation
   - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
   - sudo dpkg -i google-chrome*.deb
+
 before_script:
   - npm i -g yarn
+
 script:
   - export ROOT=$PWD
   - >
@@ -22,20 +28,21 @@ script:
       export TARGET="$ROOT/$path";
       cd $TARGET;
       yarn install;
-      yarn build;
+      yarn predeploy;
       if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
     done;
+
 after_script:
+  - npm outdate
+  #
   - yarn install
-  - yarn outdated
   - yarn upgrade
+  - yarn build
   #
   - yarn global add npm-check-updates
-  - ncu
   - ncu -u
-  #
-  - yarn upgrade
-  - npm outdate
+  - yarn build
+
 cache:
   directories:
     - node_modules/
