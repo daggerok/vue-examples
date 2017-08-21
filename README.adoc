@@ -1,0 +1,3 @@
+= vue-examples image:https://travis-ci.org/daggerok/vue-examples.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/vue-examples"]
+
+. link:0-template/[Vue.js Template App Skeleton]
