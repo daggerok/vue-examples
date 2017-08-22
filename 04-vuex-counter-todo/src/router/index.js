@@ -9,13 +9,13 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'Counter',
-      component: Counter,
-    },
-    {
-      path: '/todo-app',
       name: 'TodoApp',
       component: TodoApp,
+    },
+    {
+      path: '/counter',
+      name: 'Counter',
+      component: Counter,
     },
   ],
 });

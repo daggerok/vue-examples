@@ -2,11 +2,11 @@
   <div>
     <h3>TODO App</h3>
 
-    <input v-model="newTodo" v-on:keyup.enter="addTodo()">
+    <input v-model="newTodo" v-on:keyup.enter="addNewTodo()">
 
     <div v-for="t in todoList">
       <span :class="{ complete: !!t.done }">
-        <input type="checkbox" :checked="t.done" v-model="t.done">
+        <input type="checkbox" :checked="t.done" @click="toggleTodo(t)">
         {{t.title}}
         <label type="text" v-on:click="removeTodo(t)"> x </label>
       </span>
@@ -17,40 +17,28 @@
 <script>
   export default {
     name: 'todo-app',
-    data() {
-      return {
-        todoList: [
-          {
-            title: 'Complete task',
-            done: true,
-          },
-          {
-            title: 'Incomplete task',
-            done: false,
-          },
-        ],
-        newTodo: '',
-      };
+    computed: {
+      todoList() {
+        return this.$store.state.todoList;
+      },
+      newTodo: {
+        get: function getNewTodo() {
+          return this.$store.state.newTodo;
+        },
+        set: function setNewTodo(newValue) {
+          this.$store.commit('setNewTodo', newValue);
+        },
+      },
     },
     methods: {
-      addTodo() {
-        if (!this.newTodo || !this.newTodo.trim().length) return;
-        this.todoList = [
-          {
-            title: this.newTodo.trim(),
-            done: false,
-          },
-          ...this.todoList,
-        ];
-        this.newTodo = '';
+      toggleTodo(todo) {
+        this.$store.commit('toggleTodo', todo);
+      },
+      addNewTodo() {
+        this.$store.commit('addNewTodo');
       },
       removeTodo(todo) {
-        if (!todo.done && !confirm("TODO you going to delete wasn't complete, are you sure?")) return;
-        this.todoList = [
-          ...this.todoList
-                 .filter(t => t.title !== todo.title)
-                 .filter(t => t.done !== todo.done)
-        ];
+        this.$store.commit('removeTodo', todo);
       }
     },
   };

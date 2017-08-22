@@ -13,14 +13,14 @@
     computed: {
       counter() {
         return this.$store.state.counter
-      }
+      },
     },
     methods: {
       decrement() {
-        this.$store.commit('decrement');
+        this.$store.commit('decrementCounter');
       },
       increment() {
-        this.$store.commit('increment');
+        this.$store.commit('incrementCounter');
       },
     },
   };

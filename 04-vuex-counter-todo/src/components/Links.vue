@@ -17,11 +17,11 @@
         links: [
           {
             to: '/',
-            label: 'Home',
+            label: 'TODO App',
           },
           {
-            to: '/todo-app',
-            label: 'TODO App',
+            to: '/counter',
+            label: 'Counter App',
           },
         ],
       };
