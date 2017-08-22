@@ -25,7 +25,8 @@ before_script:
 script:
   - export ROOT=$PWD
   - >
-    for path in 02-todo-list \
+    for path in 03-hello-vuex \
+                02-todo-list \
                 01-hello-world \
                 0-template; do
 
