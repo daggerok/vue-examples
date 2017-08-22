@@ -24,12 +24,15 @@ before_script:
 script:
   - export ROOT=$PWD
   - >
-    for path in 0-template; do
+    for path in 01-hello-world \
+                0-template; do
+
       export TARGET="$ROOT/$path";
       cd $TARGET;
       yarn install;
       yarn predeploy;
       if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+
     done;
 
 after_script:
