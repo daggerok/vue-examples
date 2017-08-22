@@ -24,7 +24,8 @@ before_script:
 script:
   - export ROOT=$PWD
   - >
-    for path in 01-hello-world \
+    for path in 02-todo-list \
+                01-hello-world \
                 0-template; do
 
       export TARGET="$ROOT/$path";

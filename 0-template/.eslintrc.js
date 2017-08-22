@@ -29,5 +29,7 @@ module.exports = {
     'no-undef': 0,
     'no-labels': 0,
     'comma-dangle': 0,
+    'space-before-function-paren': 0,
+    'indent': 0,
   }
 };
