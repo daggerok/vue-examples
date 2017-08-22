@@ -37,11 +37,13 @@ after_script:
   #
   - yarn install
   - yarn upgrade
-  - yarn build
+  - yarn predeploy
   #
   - yarn global add npm-check-updates
   - ncu -u
-  - yarn build
+  - yarn predeploy
+  #
+  - npm outdate
 
 cache:
   directories:
