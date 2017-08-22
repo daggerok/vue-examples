@@ -1,14 +1,20 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
+    <p>this is from used component on page:</p>
+    <home></home>
+    <p>this is from matches route:</p>
     <router-view></router-view>
   </div>
 </template>
 
 <script>
+  import Home from './components/Home.vue';
   export default {
-    name: 'app'
-  };
+    name: 'app',
+    components: {
+      Home
+    },
+  }
 </script>
 
 <style>
