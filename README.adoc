@@ -7,3 +7,6 @@ This repository is contains some Vue.js playground project examples
 . link:02-todo-list/[TODO App]
 . link:03-hello-vuex/[Hello Vuex (uni-directional data flow)]
 . link:04-vuex-counter-todo/[Vuex SPA including Counter and TODO App]
+. link:05-vuex-contact-list/[Vuex Contact List App]
+. link:06-materialize-css/[Vue.js + materialize-css (+ jquery)]
+. link:07-vue-material/[Vue.js + vue-material (+ jquery)]

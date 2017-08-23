@@ -25,7 +25,10 @@ before_script:
 script:
   - export ROOT=$PWD
   - >
-    for path in 04-vuex-counter-todo \
+    for path in 07-vue-material \
+                06-materialize-css \
+                05-vuex-contact-list \
+                04-vuex-counter-todo \
                 03-hello-vuex \
                 02-todo-list \
                 01-hello-world \
