@@ -1,16 +1,16 @@
 <template>
   <section class="container">
-    <links></links>
+    <heading></heading>
     <nuxt/>
   </section>
 </template>
 
 <script>
-  import Links from '../components/Links.vue';
+  import Heading from '../components/Heading.vue';
 
   export default {
     components: {
-      Links,
+      Heading,
     }
   };
 </script>
