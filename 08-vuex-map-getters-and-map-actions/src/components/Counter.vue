@@ -2,8 +2,8 @@
   <div>
     <h3>Counter App</h3>
     <p>{{ counter }}</p>
-    <button @click="decrementCounterAction()"> - </button>
-    <button @click="incrementCounterAction()"> + </button>
+    <button @click="decrementCounterAction"> - </button>
+    <button @click="incrementCounterAction"> + </button>
   </div>
 </template>
 

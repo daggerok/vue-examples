@@ -2,7 +2,7 @@
   <div>
     <h3>TODO App</h3>
 
-    <input v-model="newTodoTitle" v-on:keyup.enter="addNewTodoTitleAction()">
+    <input v-model="newTodoTitle" v-on:keyup.enter="addNewTodoTitleAction">
 
     <div v-for="t in $store.state.todoList">
       <label type="text" v-on:click="removeTodoAction(t)"> x </label>

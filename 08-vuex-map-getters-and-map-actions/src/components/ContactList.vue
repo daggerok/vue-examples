@@ -11,7 +11,7 @@
       <span class="input-field col s5">
         <input v-model="newPhone">
       </span>
-      <button class="input-field col s2" @click="addNewContactAction()"> + </button>
+      <button class="input-field col s2" @click="addNewContactAction"> + </button>
     </div>
     <div class="grid">
         <div class="row" v-for="c in $store.state.contactList">
