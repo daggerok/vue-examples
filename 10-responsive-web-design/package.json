@@ -20,6 +20,7 @@
     "deploy": "gh-pages -d ./dist -b gh-pages -m \"Github Pages $(date +%Y-%m-%d) deployment\""
   },
   "dependencies": {
+    "font-awesome": "4.7.0",
     "nuxt": "1.0.0-rc6"
   },
   "devDependencies": {

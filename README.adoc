@@ -11,3 +11,5 @@ This repository is contains some Vue.js playground project examples
 . link:06-materialize-css/[Vue.js + materialize-css (+ jquery)]
 . link:07-vue-material/[Vue.js + vue-material (+ jquery)]
 . link:08-vuex-map-getters-and-map-actions/[Using vuex mapGetters and mapActions]
+. link:09-nuxt-server-side-rendering/[Nuxt.js server-side rendering using Vue.js]
+. link:10-responsive-web-design/[Responsive web design playground using Nuxt.js]

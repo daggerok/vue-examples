@@ -15,7 +15,7 @@ module.exports = {
       { hid: 'description', name: 'description', content: 'Nuxt.js server-side rendering with Vue.js' }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: `${base}favicon.ico` },
+      { rel: 'icon', type: 'image/x-icon', href: base + 'favicon.ico' },
     ],
   },
   /**
