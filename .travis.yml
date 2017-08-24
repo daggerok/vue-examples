@@ -25,7 +25,8 @@ before_script:
 script:
   - export ROOT=$PWD
   - >
-    for path in 08-vuex-map-getters-and-map-actions \
+    for path in 09-nuxt-server-side-rendering \
+                08-vuex-map-getters-and-map-actions \
                 07-vue-material \
                 06-materialize-css \
                 05-vuex-contact-list \

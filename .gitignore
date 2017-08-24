@@ -10,3 +10,7 @@ dist/
 *.njsproj
 *.sln
 *.lock
+.yarnclean
+
+# Nuxt build
+.nuxt
