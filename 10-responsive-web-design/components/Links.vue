@@ -1,15 +1,17 @@
 <template>
-  <div class="links">
-    <nuxt-link to="/">
-      <div class="button--grey">Home</div>
-    </nuxt-link>
-    <nuxt-link to="/services">
-      <div class="button--grey">Services</div>
-    </nuxt-link>
-    <nuxt-link to="/about">
-      <div class="button--grey">About</div>
-    </nuxt-link>
-  </div>
+  <nav>
+    <ul>
+      <li class="current">
+        <nuxt-link to="/">Home</nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="/services">Services</nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="/about">About</nuxt-link>
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <script>
@@ -18,4 +20,11 @@
   };
 </script>
 
-<style scoped=""></style>
+<style>
+  .nuxt-link-exact-active {
+
+  }
+  .nuxt-link-active {
+
+  }
+</style>
