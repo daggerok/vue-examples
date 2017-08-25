@@ -1,9 +1,6 @@
 const base = 'gh-pages' === process.env.NODE_ENV ? '/vue-examples/' : '/';
 
 module.exports = {
-  router: {
-    base,
-  },
   /**
    * Headers of the page
    */
@@ -26,7 +23,6 @@ module.exports = {
    * Build configuration
    */
   build: {
-    publicPath: '/static/',
     /**
      * Run ESLINT on save
      */
@@ -39,6 +35,14 @@ module.exports = {
           exclude: /(node_modules)/
         });
       }
-    }
+    },
+    publicPath: '/static/',
+    extractCSS: true,
   },
+  router: {
+    base,
+  },
+  css: [
+    'font-awesome/css/font-awesome.min.css'
+  ],
 };

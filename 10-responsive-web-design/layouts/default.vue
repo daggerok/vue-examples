@@ -20,7 +20,7 @@
 
 <style>
 
-  @import "../node_modules/font-awesome/css/font-awesome.min.css";
+  /*@import "../node_modules/font-awesome/css/font-awesome.min.css";*/
 
   body {
     padding: 0;
@@ -153,7 +153,7 @@
   #boxes .box {
     float: left;
     text-align: center;
-    width: 33%;
+    width: 31.5%;
     /*min-width: 300px;*/
     padding: 10px;
   }
