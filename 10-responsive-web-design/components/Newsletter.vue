@@ -2,7 +2,7 @@
   <section id="newsletter">
     <div class="container">
       <h1>Get our Newsletter</h1>
-      <form action="">
+      <form action="#">
         <input type="email" placeholder="Enter e-mail">
         <button class="subscribe-btn">Subscribe</button>
       </form>

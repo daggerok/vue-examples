@@ -18,6 +18,10 @@ body {
   padding: 2vh;
 }
 
+.contact {
+
+}
+
 /**/
 
 ul {
@@ -177,6 +181,39 @@ aside#sidebar h1 {
 
 /**/
 
+#services ul li {
+  padding: 2vh 4vh;
+  border: #ccc solid 1px;
+  margin-bottom: 2vh;
+  background-color: #32a0c2;
+}
+
+#services h3 {
+  border-bottom: #1443c2 solid 1px;
+}
+
+aside#sidebar input,
+aside#sidebar textarea,
+aside#sidebar button {
+  font-size: 2vh;
+  padding: 5px;
+  margin-bottom: 1vh;
+}
+
+aside#sidebar input {
+  width: 95%;
+}
+
+aside#sidebar textarea {
+  width: 96%;
+}
+
+aside#sidebar button {
+  width: 99%;
+}
+
+/**/
+
 @media(max-width: 1067px) {
   header #branding,
   header nav,
@@ -248,6 +285,28 @@ aside#sidebar h1 {
 
   article#main p,
   aside#sidebar p {
+    font-size: 5vh;
+    min-height: 5vh;
+  }
+
+
+
+  aside#sidebar input,
+  aside#sidebar textarea {
+    font-size: 5vh;
+  }
+
+  aside#sidebar input {
+    width: 95%;
+  }
+
+  aside#sidebar textarea {
+    width: 95.5%;
+  }
+
+  aside#sidebar button {
+    width: 97%;
+    margin: 1vh;
     font-size: 3vh;
   }
 }
