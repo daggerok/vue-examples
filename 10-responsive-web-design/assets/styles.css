@@ -11,6 +11,13 @@ body {
   overflow: hidden;
 }
 
+.dark {
+  background: #35424a;
+  color: #fff;
+  margin: 1vh 0 5vh;
+  padding: 2vh;
+}
+
 /**/
 
 ul {
@@ -71,7 +78,9 @@ header a:hover {
 
 #showcase {
   min-height: 40vh;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../static/i.jpg") no-repeat;
+  background: linear-gradient(rgba(0, 0, 0, 0.5),
+                              rgba(0, 0, 0, 0.5)),
+              url("../static/i.jpg") no-repeat;
   background-size: cover;
   text-align: center;
   color: #fff;
@@ -144,7 +153,29 @@ footer {
   height: 10vh;
   padding-top: 2vh;
   margin-top: 2vh;
+  /* put footer bottom */
+  clear: both;
 }
+
+/**/
+
+article#main {
+  float: left;
+  width: 65%;
+}
+
+aside#sidebar {
+  float: right;
+  width: 30%;
+  padding: 2vh;
+}
+
+article#main h1,
+aside#sidebar h1 {
+  font-size: 5vh;
+}
+
+/**/
 
 @media(max-width: 1067px) {
   header #branding,
@@ -152,7 +183,8 @@ footer {
   header nav li,
   #newsletter h1,
   #newsletter form,
-  #boxes .box {
+  #boxes .box,
+  article#main, aside#sidebar {
     float: none;
     text-align: center;
     width: 99%;
@@ -202,10 +234,20 @@ footer {
 
   .subscribe-btn {
     margin-left: 2vh;
-    height: vh;
+    height: 5vh;
   }
 
   .box {
+    font-size: 3vh;
+  }
+
+  article#main h1,
+  aside#sidebar h1 {
+    font-size: 6vh;
+  }
+
+  article#main p,
+  aside#sidebar p {
     font-size: 3vh;
   }
 }
