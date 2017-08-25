@@ -19,8 +19,8 @@
 </script>
 
 <style>
-
-  /*@import "../node_modules/font-awesome/css/font-awesome.min.css";*/
+/*
+  @import "../node_modules/font-awesome/css/font-awesome.min.css";
 
   body {
     padding: 0;
@@ -35,7 +35,6 @@
     overflow: hidden;
   }
 
-  /**/
 
   ul {
     margin: 0;
@@ -57,11 +56,6 @@
     font-size: 2vh;
   }
 
-  /*
-  item1
-  item2 => item1 item2 item3
-  item3
-   */
   header li {
     float: left;
     display: inline;
@@ -76,7 +70,6 @@
     margin: 0;
   }
 
-  /* move nav right */
   header nav {
     float: right;
     margin-top: 1vh;
@@ -91,7 +84,6 @@
     font-weight: bold;
   }
 
-  /**/
 
   #showcase {
     min-height: 40vh;
@@ -111,7 +103,6 @@
     font-size: 2vh;
   }
 
-  /**/
 
   #newsletter {
     min-height: 5vh;
@@ -144,7 +135,6 @@
     color: #353637;
   }
 
-  /**/
 
   #boxes {
     margin-top: 20px;
@@ -154,7 +144,6 @@
     float: left;
     text-align: center;
     width: 31.5%;
-    /*min-width: 300px;*/
     padding: 10px;
   }
 
@@ -166,5 +155,5 @@
     padding-top: 2vh;
     margin-top: 2vh;
   }
-
+*/
 </style>
