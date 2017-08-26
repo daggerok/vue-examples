@@ -25,7 +25,7 @@ before_script:
 script:
   - export ROOT=$PWD
   - >
-    for path in 11-firebase-using-vuefire-and-vue-material \
+    for path in 11-firebase-using-vuefire \
                 10-responsive-web-design \
                 09-nuxt-server-side-rendering \
                 08-vuex-map-getters-and-map-actions \
