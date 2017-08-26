@@ -13,3 +13,4 @@ This repository is contains some Vue.js playground project examples
 . link:08-vuex-map-getters-and-map-actions/[Using vuex mapGetters and mapActions]
 . link:09-nuxt-server-side-rendering/[Nuxt.js server-side rendering using Vue.js]
 . link:10-responsive-web-design/[Responsive web design playground using Nuxt.js]
+. link:11-firebase-using-vuefire-and-vue-material/[Firenase App using vuefire. Style with vue-material]
