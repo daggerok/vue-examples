@@ -7,6 +7,17 @@ import FirebaseApp from '../components/FirebaseApp.vue';
 
 Vue.use(Router);
 
+const meta = {
+  progress: {
+    func: [
+      { call: 'color', modifier: 'temp', argument: 'rgb(143, 255, 199)', },
+      { call: 'fail', modifier: 'temp', argument: '#6e0000' },
+      { call: 'location', modifier: 'temp', argument: 'top' },
+      { call: 'transition', modifier: 'temp', argument: { speed: '1.5s', opacity: '0.6s', termination: 400 }, },
+    ],
+  },
+};
+
 export const routes = [
   {
     path: '/',
@@ -36,7 +47,10 @@ export const routes = [
     path: '/**',
     redirect: '/',
   },
-];
+].map(r => {
+  r.meta = meta;
+  return r;
+});
 
 const router = new Router({
   routes,

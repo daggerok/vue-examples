@@ -34,5 +34,7 @@ module.exports = {
     'no-multiple-empty-lines': 0,
     'import/first': 0,
     'standard/computed-property-even-spacing': 0,
+    'spaced-comment': 0,
+    'padded-blocks': 0,
   }
 };

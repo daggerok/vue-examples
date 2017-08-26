@@ -1,24 +1,50 @@
 <template>
   <div id="firebase-app">
-    <form novalidate @submit.stop.prevent="submit">
-      <md-input-container>
-        <label>Name</label>
-        <md-input v-model="model.name" placeholder="Enter your name"></md-input>
+    <form novalidate @submit.prevent="validateAndSend">
+      <md-input-container :class="{'md-input-invalid': errors.has('form-name')}">
+        <label for="form-name">Name</label>
+        <md-input id="form-name"
+                  data-vv-name="form-name"
+                  type="email"
+                  v-validate
+                  name="form-name"
+                  data-vv-rules="required|min:3"
+                  placeholder="Enter your Name"
+                  v-model="model.name"></md-input>
+        <span class="md-error">{{errors.first('form-name')}}</span>
       </md-input-container>
 
-      <md-input-container>
-        <label>Email</label>
-        <md-input v-model="model.email" placeholder="Enter your Email"></md-input>
+      <md-input-container :class="{'md-input-invalid': errors.has('form-email')}">
+        <label for="form-email">Email</label>
+        <md-input id="form-email"
+                  data-vv-name="form-email"
+                  type="email"
+                  v-validate
+                  name="form-email"
+                  data-vv-rules="required|email"
+                  placeholder="Enter your Email"
+                  v-model="model.email"></md-input>
+        <span class="md-error">{{errors.first('form-email')}}</span>
       </md-input-container>
 
-      <md-input-container>
-        <label>Message</label>
-        <md-textarea v-model="model.message"></md-textarea>
+      <md-input-container :class="{'md-input-invalid': errors.has('form-message')}">
+        <label for="form-message">Message</label>
+        <md-input id="form-message"
+                  data-vv-name="form-message"
+                  type="email"
+                  v-validate
+                  name="form-message"
+                  data-vv-rules="required|min:10"
+                  placeholder="Enter your Message"
+                  v-model="model.message"></md-input>
+        <span class="md-error">{{errors.first('form-message')}}</span>
       </md-input-container>
 
       <md-button type="submit" class="md-fab">
         <md-icon>add</md-icon>
       </md-button>
+
+      <!--<pre>errors: {{errors}}</pre>-->
     </form>
 
     <md-table-card>
@@ -66,7 +92,12 @@
 </template>
 
 <script>
+
+  import MdInputContainer from '../../node_modules/vue-material/src/components/mdInputContainer/mdInputContainer.vue';
+
   export default {
+
+    components: { MdInputContainer },
     name: 'firebase-app',
     data: () => ({
       initialValue: 'My initial value',
@@ -101,11 +132,24 @@
         // the 'param' is composed by a query param and
         // a query.
       },
-      submit() {
-        Object.keys(this.model).forEach(k => {
+      validateAndSend() {
+
+        this.$validator.resume();
+
+        this.$validator.validateAll();
+
+        const keys = Object.keys(this.model);
+        const len = keys.length;
+        const values = keys.map(k => this.model[k]);
+        const nonEmpty = values.filter(v => !!v).length;
+
+        if (len !== nonEmpty) return;
+        keys.forEach(k => {
           this.model[k] = '';
         });
-      }
+
+        this.$validator.pause();
+      },
     },
   };
 </script>
