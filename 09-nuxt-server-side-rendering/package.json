@@ -35,7 +35,7 @@
     "eslint-plugin-standard": "3.0.1",
     "gh-pages": "1.0.0",
     "ncp": "2.0.0",
-    "npm-run-all": "4.0.2",
+    "npm-run-all": "4.1.0",
     "rimraf": "2.6.1"
   },
   "main": "nuxt.config.js",
