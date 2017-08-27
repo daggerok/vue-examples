@@ -10,7 +10,12 @@ dist/
 *.njsproj
 *.sln
 *.lock
+package-lock.json
 .yarnclean
+*=
 
 # Nuxt build
 .nuxt
+
+firebase.js
+!firebase.js.default

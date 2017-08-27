@@ -3,6 +3,8 @@
 - [vue-material: read more](http://vuematerial.io/)
 - [vee-validate: read more](http://vee-validate.logaretm.com/)
 - [vue-progressbar: read more](https://github.com/hilongjw/vue-progressbar)
+- [vuefire: read more](https://github.com/vuejs/vuefire)
+- [vuexfire: read more](https://github.com/posva/vuexfire)
 
 TODO:
 

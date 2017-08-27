@@ -29,12 +29,4 @@ export const state = {
   ],
   newName: '',
   newPhone: '',
-  // firebase
-  messages: [
-    {
-      name: 'Maksim',
-      email: 'daggerok@gmail.com',
-      body: 'Hello there!',
-    }
-  ],
 };

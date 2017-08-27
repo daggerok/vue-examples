@@ -1,6 +1,6 @@
 <template>
   <div id="firebase-app">
-    <form novalidate @submit.prevent="validateAndSend">
+    <form novalidate @submit.prevent="$validator.validateAll() && sendMessage()">
       <md-input-container :class="{'md-input-invalid': errors.has('form-name')}">
         <label for="form-name">Name</label>
         <md-input id="form-name"
@@ -39,116 +39,105 @@
                   v-model="model.message"></md-input>
         <span class="md-error">{{errors.first('form-message')}}</span>
       </md-input-container>
-
-      <md-button type="submit" class="md-fab">
-        <md-icon>add</md-icon>
-      </md-button>
-
       <!--<pre>errors: {{errors}}</pre>-->
+      <md-button type="submit" class="md-fab" v-show="!errors.any()">
+        <md-icon @submit.prevent="$validator.validateAll() && sendMessage()">add</md-icon>
+      </md-button>
     </form>
 
     <md-table-card>
-      <md-toolbar>
-        <h1 class="md-title">Messages</h1>
-        <md-button class="md-icon-button">
-          <md-icon>filter_list</md-icon>
-        </md-button>
-
-        <md-button class="md-icon-button">
-          <md-icon>search</md-icon>
-        </md-button>
-      </md-toolbar>
-
-      <md-table-alternate-header md-selected-label="selected">
-        <md-button class="md-icon-button">
-          <md-icon>delete</md-icon>
-        </md-button>
-
-        <md-button class="md-icon-button">
-          <md-icon>more_vert</md-icon>
-        </md-button>
-      </md-table-alternate-header>
-
-      <md-table md-sort="date">
-        <md-table-header>
-          <md-table-row>
-            <md-table-head md-sort-by="date">Date</md-table-head>
-            <md-table-head md-sort-by="name" width="100px">Name</md-table-head>
-            <md-table-head md-sort-by="email">Email</md-table-head>
-            <md-table-head md-sort-by="message" md-tooltip="expand">Message</md-table-head>
-          </md-table-row>
-        </md-table-header>
-
+      <md-table md-sort="date" @select="onSelect">
         <md-table-body>
           <md-table-row v-for="(row, index) in messages" :key="index" :md-item="row" md-selection>
             <md-table-cell v-for="(column, i) in row" :key="i">
-              <span>{{ column }}</span>
+              <span>{{ index }} - {{ column }}</span>
             </md-table-cell>
           </md-table-row>
         </md-table-body>
       </md-table>
+
+      <md-button @click="onDelete" v-show="showTrash" class="md-icon-button">
+        <md-icon>delete</md-icon>
+      </md-button>
+      <!--
+      <md-table-pagination md-size="5"
+                           md-total="10"
+                           md-page="1"
+                           md-label="Rows"
+                           md-separator="of"
+                           :md-page-options="[5, 10, 25, 50]"
+                           @pagination="/*onPagination*/">
+      </md-table-pagination>
+      -->
     </md-table-card>
   </div>
 </template>
 
 <script>
-
-  import MdInputContainer from '../../node_modules/vue-material/src/components/mdInputContainer/mdInputContainer.vue';
+  import { db } from '../firebase';
 
   export default {
-
-    components: { MdInputContainer },
+    firebase: {
+      messages: db.ref('messages'),
+    },
     name: 'firebase-app',
-    data: () => ({
-      initialValue: 'My initial value',
-      messages: [
-        {
-          date: Date.now(),
-          name: 'max',
-          email: 'max@mail',
-          message: 'ololo'
+    data() {
+      return {
+        model: {
+          name: '',
+          email: '',
+          message: '',
         },
-        {
-          date: Date.now(),
-          name: 'bax',
-          email: 'bax@email',
-          message: 'trololo'
-        },
-      ],
-      model: {
-        name: '',
-        email: '',
-        message: '',
+        keys: [],
+      };
+    },
+    computed: {
+      showTrash() {
+        return this.keys && this.keys.length > 0;
       },
-    }),
+    },
     methods: {
+      onDelete() {
+        this.keys = this.keys.forEach(key =>
+          this.$firebaseRefs.messages.child(key).remove()) || [];
+      },
+      onSelect(items) {
+        if (!items) return;
+        this.keys = items.map(item => item['.key']);
+      },
       fetchFunction(param) {
         // param = { queryParam: query }
-
         // 'fetchAutocomplete' should return a Promise.
-
         // md-autocomplete will call fetchAutocomplete and pass
         // 'param' as an argument.
         // the 'param' is composed by a query param and
         // a query.
       },
-      validateAndSend() {
-
+      sendMessage() {
         this.$validator.resume();
+        this.$validator.validateAll().then(result => {
+          if (!result) return;
+          if (this.errors.any()) return;
 
-        this.$validator.validateAll();
+          const keys = Object.keys(this.model);
+          const len = keys.length;
+          const values = keys.map(k => this.model[k]);
+          const nonEmpty = values.filter(v => !!v).length;
 
-        const keys = Object.keys(this.model);
-        const len = keys.length;
-        const values = keys.map(k => this.model[k]);
-        const nonEmpty = values.filter(v => !!v).length;
+          if (len !== nonEmpty) return;
 
-        if (len !== nonEmpty) return;
-        keys.forEach(k => {
-          this.model[k] = '';
+          this.$firebaseRefs.messages.push({
+            date: Date.now(),
+            name: this.model.name,
+            email: this.model.email,
+            message: this.model.message,
+          });
+
+          keys.forEach(k => {
+            this.model[k] = '';
+          });
+          this.$validator.pause();
         });
-
-        this.$validator.pause();
       },
     },
   };

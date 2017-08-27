@@ -65,6 +65,7 @@ export const addNewContactMutation = state => {
   state.newName = state.newPhone = '';
 };
 
+// mutations
 export const mutations = {
   decrementCounterMutation,
   incrementCounterMutation,
