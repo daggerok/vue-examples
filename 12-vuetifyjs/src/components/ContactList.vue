@@ -23,6 +23,8 @@
 
 <script>
   import { mapActions } from 'vuex';
+  window.$ = window.jQuery = require('jquery');
+  require('materialize-css');
 
   export default {
     name: 'contact-list',
@@ -56,6 +58,9 @@
 </script>
 
 <style scoped="">
+  @import "~material-design-icons/iconfont/material-icons.css";
+  @import "~materialize-css/dist/css/materialize.min.css";
+
   ul {
     list-style: none;
   }

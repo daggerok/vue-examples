@@ -64,6 +64,9 @@
 </template>
 
 <script>
+  import '../vendor/vue-material';
+  import '../vendor/vee-validate';
+  import '../vendor/vuefire';
   import { db } from '../firebase';
 
   export default {
@@ -126,6 +129,8 @@
 </script>
 
 <style scoped="">
+  @import "~material-design-icons/iconfont/material-icons.css";
+
   #firebase-app {
     padding: 2%;
   }
