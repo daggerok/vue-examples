@@ -14,9 +14,9 @@
       <button class="input-field col s2" @click="addNewContactAction"> + </button>
     </div>
     <div class="grid">
-        <div class="row" v-for="c in $store.state.contactList">
-          <span class="item">{{ c.name }}</span>: <span class="item">{{ c.phone }}</span>
-        </div>
+      <div class="row" v-for="c in $store.state.contactList">
+        <span class="item">{{ c.name }}</span>: <span class="item">{{ c.phone }}</span>
+      </div>
     </div>
   </div>
 </template>
@@ -28,12 +28,20 @@
     name: 'contact-list',
     computed: {
       newName: {
-        get: function getNewName() { return this.$store.state.newName },
-        set: function setNewName(newValue) { this.setNewNameAction(newValue) }
+        get: function getNewName() {
+          return this.$store.state.newName;
+        },
+        set: function setNewName(newValue) {
+          this.setNewNameAction(newValue);
+        }
       },
       newPhone: {
-        get: function getNewPhone() { return this.$store.state.newPhone },
-        set: function setNewPhone(newValue) { this.setNewPhoneAction(newValue) }
+        get: function getNewPhone() {
+          return this.$store.state.newPhone;
+        },
+        set: function setNewPhone(newValue) {
+          this.setNewPhoneAction(newValue);
+        }
       },
     },
     methods: mapActions([
@@ -41,19 +49,17 @@
       'setNewNameAction',
       'setNewPhoneAction',
     ]),
-    mounted () {
+    mounted() {
       $('select').material_select();
     },
   };
 </script>
 
 <style scoped="">
-  /*@import '~material-design-icons/iconfont/material-icons.css';*/
-  /*@import '~materialize-css/dist/css/materialize.min.css';*/
-
   ul {
     list-style: none;
   }
+
   .grid {
     display: grid;
     grid-template-columns: 34% 32% 33%;

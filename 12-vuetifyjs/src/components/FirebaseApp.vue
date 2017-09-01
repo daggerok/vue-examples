@@ -59,16 +59,6 @@
       <md-button @click="onDelete" v-show="showTrash" class="md-icon-button">
         <md-icon>delete</md-icon>
       </md-button>
-      <!--
-      <md-table-pagination md-size="5"
-                           md-total="10"
-                           md-page="1"
-                           md-label="Rows"
-                           md-separator="of"
-                           :md-page-options="[5, 10, 25, 50]"
-                           @pagination="/*onPagination*/">
-      </md-table-pagination>
-      -->
     </md-table-card>
   </div>
 </template>
@@ -104,14 +94,6 @@
       onSelect(items) {
         if (!items) return;
         this.keys = items.map(item => item['.key']);
-      },
-      fetchFunction(param) {
-        // param = { queryParam: query }
-        // 'fetchAutocomplete' should return a Promise.
-        // md-autocomplete will call fetchAutocomplete and pass
-        // 'param' as an argument.
-        // the 'param' is composed by a query param and
-        // a query.
       },
       sendMessage() {
         this.$validator.resume();

@@ -105,14 +105,6 @@
         if (!items) return;
         this.keys = items.map(item => item['.key']);
       },
-      fetchFunction(param) {
-        // param = { queryParam: query }
-        // 'fetchAutocomplete' should return a Promise.
-        // md-autocomplete will call fetchAutocomplete and pass
-        // 'param' as an argument.
-        // the 'param' is composed by a query param and
-        // a query.
-      },
       sendMessage() {
         this.$validator.resume();
         this.$validator.validateAll().then(result => {

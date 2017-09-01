@@ -29,10 +29,9 @@
     },
     methods: {
       randomClass() {
-//        return 'md-dense';
         return this.buttonClasses[
           Math.floor(Math.random() * this.boardClasses.length)
-        ];
+          ];
       }
     },
   };

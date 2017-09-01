@@ -10,5 +10,3 @@
     name: 'vuetify-app',
   };
 </script>
-
-<style scoped=""></style>

@@ -21,5 +21,3 @@
     ]),
   };
 </script>
-
-<style scoped=""></style>
