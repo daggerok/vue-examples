@@ -20,7 +20,6 @@
     "jquery": "3.2.1",
     "material-design-icons": "3.0.1",
     "materialize-css": "0.100.2",
-    "roboto-fontface": "0.8.0",
     "vee-validate": "2.0.0-rc.14",
     "vue": "2.4.2",
     "vue-material": "0.7.4",
@@ -29,15 +28,12 @@
     "vuefire": "1.4.3",
     "vuetify": "0.15.0-beta.5",
     "vuex": "2.4.0",
-    "vuexfire": "2.2.0",
-    "whatwg-fetch": "2.0.3"
+    "vuexfire": "2.2.0"
   },
   "devDependencies": {
     "@types/firebase": "2.4.32",
     "@types/jquery": "3.2.12",
     "@types/node": "8.0.26",
-    "@types/systemjs": "0.20.4",
-    "@types/whatwg-fetch": "0.0.33",
     "autoprefixer": "7.1.3",
     "babel-core": "6.26.0",
     "babel-eslint": "7.2.3",
