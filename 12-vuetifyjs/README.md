@@ -1,6 +1,6 @@
 # Vietify
 
-Using Vuetify.js
+Using [Vuetify.js](https://vuetifyjs.com/vuetify/quick-start)
 
 ## build and run
 
