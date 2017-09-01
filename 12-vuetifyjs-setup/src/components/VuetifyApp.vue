@@ -16,7 +16,8 @@
   };
 </script>
 
-<style scoped="">
+<style scoped="" lang="stylus">
   @import "~material-design-icons/iconfont/material-icons.css";
-  @import "~vuetify/dist/vuetify.min.css";
+  /*@import "~vuetify/dist/vuetify.min.css";*/
+  @import "~vuetify/src/stylus/main.styl";
 </style>

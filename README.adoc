@@ -13,4 +13,4 @@ This repository is contains some Vue.js playground project examples
 . link:09-nuxt-server-side-rendering/[Nuxt.js server-side rendering using Vue.js]
 . link:10-responsive-web-design/[Responsive web design playground using Nuxt.js]
 . link:11-firebase-using-vuefire/[Firebase App using vuefire]
-. link:12-vuetifyjs/[Vuetify]
+. link:13-vuetify/[Vuetify]

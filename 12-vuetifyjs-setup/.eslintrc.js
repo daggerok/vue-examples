@@ -29,5 +29,6 @@ module.exports = {
     'spaced-comment': 0,
     'padded-blocks': 0,
     'no-new': 0,
+    'curly': 0,
   }
 };
