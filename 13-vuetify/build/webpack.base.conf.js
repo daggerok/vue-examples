@@ -2,6 +2,7 @@ const path = require('path');
 const utils = require('./utils');
 const config = require('../config');
 const vueLoaderConfig = require('./vue-loader.conf');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
 
 function resolve(dir) {
@@ -20,6 +21,9 @@ module.exports = {
       : config.dev.assetsPublicPath
   },
   plugins: [
+    new  CopyWebpackPlugin([
+      { from: 'service-worker' }
+    ]),
     new BaseHrefWebpackPlugin({
       baseHref: process.env.NODE_ENV === 'production'
         ? config.build.assetsPublicPath
