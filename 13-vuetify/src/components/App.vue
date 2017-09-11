@@ -5,7 +5,7 @@
       <v-toolbar-title>Nice Material Vuetify</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
-        <v-btn flat="" @click="changeLocation()">
+        <v-btn flat="">
           <a class="btn__content"
              target="_blank"
              href="https://github.com/daggerok/vue-examples/tree/master/13-vuetify">GitHub</a></v-btn>
