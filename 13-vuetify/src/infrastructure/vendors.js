@@ -41,6 +41,12 @@ if (!window.$ || typeof window.$ !== 'function')
   window.$ = window.jQuery = require('jquery');
 
 /*
+ * font-awesome
+ */
+
+import 'font-awesome/css/font-awesome.css';
+
+/*
  * material design icons
  */
 
