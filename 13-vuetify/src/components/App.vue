@@ -31,8 +31,7 @@
         </v-btn>
         <v-btn flat="">
           <i class="fa icon fa-github" />
-          <a class="btn__content"
-             target="_blank"
+          <a class="btn__content a--text-decoration--none"
              href="https://github.com/daggerok/vue-examples/tree/master/13-vuetify">
             GitHub
           </a>
@@ -86,6 +85,7 @@
 </script>
 
 <style lang="stylus">
+  /* Vuetify theme configuration */
   @import "~vuetify/src/stylus/settings/_colors.styl";
   $theme := {
     primary: $blue.darken-2
@@ -97,4 +97,7 @@
     success: $green.base
   }
   @import "~vuetify/src/stylus/main.styl";
+  /* global v-app styling */
+  a.a--text-decoration--none
+    text-decoration none
 </style>
