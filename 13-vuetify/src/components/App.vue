@@ -9,12 +9,12 @@
       absolute
     >
       <v-list>
-        <v-list-tile>
+        <v-list-tile v-for="item in menuItems">
           <v-list-tile-action>
-            <v-icon>cloud</v-icon>
+            <v-icon>{{item.icon}}</v-icon>
           </v-list-tile-action>
           <v-list-tile-content>
-            cloud
+            {{item.value}}
           </v-list-tile-content>
         </v-list-tile>
       </v-list>
@@ -51,6 +51,12 @@
     data() {
       return {
         sideNav: false,
+        menuItems: [
+          { value: 'cloud', icon: 'cloud' },
+          { value: 'event', icon: 'event' },
+          { value: 'info', icon: 'info' },
+          { value: 'home', icon: 'home' },
+        ],
       };
     },
     mounted() {
