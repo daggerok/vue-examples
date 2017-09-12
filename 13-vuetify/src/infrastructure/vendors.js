@@ -56,8 +56,8 @@ import 'material-design-icons/iconfont/material-icons.css';
  * vuetify
  */
 
-// import('vuetify/dist/vuetify.min.css');
-import 'vuetify/src/stylus/main.styl';
+// // import('vuetify/dist/vuetify.min.css');
+// import 'vuetify/src/stylus/main.styl';
 
 import Vuetify from 'vuetify';
 

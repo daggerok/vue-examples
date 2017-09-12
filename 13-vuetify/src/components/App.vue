@@ -1,16 +1,23 @@
 <template>
-  <v-app dark toolbar>
+  <v-app toolbar>
     <!--enable-resize-watcher-->
-    <v-navigation-drawer
+    <v-navigation-drawer v-model="sideNav"
       class="pb-0"
       persistent
       height="100%"
       clipped
       absolute
-
-      v-model="sideNav"
     >
-
+      <v-list>
+        <v-list-tile>
+          <v-list-tile-action>
+            <v-icon>cloud</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            cloud
+          </v-list-tile-content>
+        </v-list-tile>
+      </v-list>
     </v-navigation-drawer>
     <links></links>
     <v-toolbar fixed="">
@@ -43,7 +50,7 @@
     },
     data() {
       return {
-        sideNav: false
+        sideNav: false,
       };
     },
     mounted() {
@@ -66,4 +73,16 @@
   };
 </script>
 
-<style scoped=""></style>
+<style lang="stylus">
+  @import "~vuetify/src/stylus/settings/_colors.styl";
+  $theme := {
+    primary: $blue.darken-2
+    accent: $blue.accent-2
+    secondary: $grey.darken-3
+    info: $blue.base
+    warning: $amber.base
+    error: $red.base
+    success: $green.base
+  }
+  @import "~vuetify/src/stylus/main.styl";
+</style>
