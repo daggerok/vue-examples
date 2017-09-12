@@ -1,7 +1,20 @@
 <template>
-  <v-app dark>
+  <v-app dark toolbar>
+    <!--enable-resize-watcher-->
+    <v-navigation-drawer
+      class="pb-0"
+      persistent
+      height="100%"
+      clipped
+      absolute
+
+      v-model="sideNav"
+    >
+
+    </v-navigation-drawer>
     <links></links>
-    <v-toolbar>
+    <v-toolbar fixed="">
+      <v-toolbar-side-icon @click.native.stop="sideNav = !sideNav"></v-toolbar-side-icon>
       <v-toolbar-title>Nice Material Vuetify</v-toolbar-title>
       <v-spacer></v-spacer>
       <v-toolbar-items>
@@ -27,6 +40,11 @@
     name: 'app',
     components: {
       Links,
+    },
+    data() {
+      return {
+        sideNav: false
+      };
     },
     mounted() {
       this.$Progress.finish();
