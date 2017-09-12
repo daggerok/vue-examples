@@ -24,9 +24,13 @@
       <v-toolbar-side-icon @click.native.stop="sideNav = !sideNav"></v-toolbar-side-icon>
       <v-toolbar-title>Nice Material Vuetify</v-toolbar-title>
       <v-spacer></v-spacer>
-      <v-toolbar-items>
+      <v-toolbar-items class="hidden-md-and-down">
+        <v-btn flat="" v-for="item in menuItems">
+          <v-icon left="">{{item.icon}}</v-icon>
+          {{item.value}}
+        </v-btn>
         <v-btn flat="">
-          <i class="fa icon fa-github" data-v-c5e56f46=""/>
+          <i class="fa icon fa-github" />
           <a class="btn__content"
              target="_blank"
              href="https://github.com/daggerok/vue-examples/tree/master/13-vuetify">
@@ -52,10 +56,12 @@
       return {
         sideNav: false,
         menuItems: [
-          { value: 'cloud', icon: 'cloud' },
-          { value: 'event', icon: 'event' },
-          { value: 'info', icon: 'info' },
-          { value: 'home', icon: 'home' },
+          { icon: 'info', value: 'Additional Info' },
+          { icon: 'event', value: 'Events' },
+          { icon: 'cloud', value: 'Download' },
+          { icon: 'face', value: 'Sign Up' },
+          { icon: 'lock_open', value: 'Sign In' },
+          { icon: 'home', value: 'Home' },
         ],
       };
     },
