@@ -20,7 +20,6 @@ before_install:
 
 before_script:
   - npm i -g yarn
-  - yarn global add npm-check-updates
 
 script:
   - export ROOT=$PWD
@@ -43,15 +42,18 @@ script:
 
       export TARGET="$ROOT/$path";
       cd $TARGET;
+
       yarn install;
       yarn predeploy;
       if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+
       npm outdate
       yarn upgrade
       yarn build --report
-      ncu -u
+
+      yarn global add npm-check-updates
       rm -rf yarn.lock
-      yarn install
+      yarn -i
       yarn build
 
     done;
