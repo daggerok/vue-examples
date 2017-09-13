@@ -24,20 +24,20 @@
     "nuxt": "1.0.0-rc6"
   },
   "devDependencies": {
-    "babel-eslint": "7.2.3",
+    "babel-eslint": "8.0.0",
     "cross-env": "5.0.5",
-    "eslint": "4.5.0",
+    "eslint": "4.6.1",
     "eslint-config-standard": "10.2.1",
     "eslint-loader": "1.9.0",
-    "eslint-plugin-html": "3.2.0",
+    "eslint-plugin-html": "3.2.1",
     "eslint-plugin-import": "2.7.0",
     "eslint-plugin-node": "5.1.1",
     "eslint-plugin-promise": "3.5.0",
     "eslint-plugin-standard": "3.0.1",
     "gh-pages": "1.0.0",
     "ncp": "2.0.0",
-    "npm-run-all": "4.1.0",
-    "rimraf": "2.6.1"
+    "npm-run-all": "4.1.1",
+    "rimraf": "2.6.2"
   },
   "main": "nuxt.config.js",
   "repository": "https://github.com/daggerok/vue-examples.git",
