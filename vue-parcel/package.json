@@ -24,5 +24,10 @@
     "preghpages:fallback": "ncp ./dist/index.html ./dist/404.html",
     "preghpages:nojekyll": "touch ./dist/.nojekyll",
     "ghpages": "gh-pages -d ./dist -b gh-pages -m \"Parcel Github Pages $(date +%Y-%m-%d) deployment\""
+  },
+  "babel": {
+    "presets": [
+      "env"
+    ]
   }
 }
