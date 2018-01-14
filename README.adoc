@@ -15,3 +15,5 @@ This repository is contains some Vue.js playground project examples
 . link:11-firebase-using-vuefire/[Firebase App using vuefire]
 . link:13-vuetify/[Vuetify]
 . link:14-some-vuetify-app/[Vuetify routes playground app]
+. link:vue-parcel/[Parcel Bundler]
+. link:eventbus/[eventus]

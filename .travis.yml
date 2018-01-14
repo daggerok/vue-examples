@@ -1,9 +1,13 @@
-group: edge
+sudo: required
+group: travis_lts
+
+env:
+  global:
+    TERM=dumb
 
 language: node_js
 
 node_js:
-- 5
 - 6
 - 7
 - 8
@@ -16,19 +20,28 @@ before_install:
 - export CHROME_BIN=/usr/bin/google-chrome
 - export DISPLAY=:99.0
 - sh -e /etc/init.d/xvfb start
-- sudo apt update
-- sudo apt install -y libappindicator1 fonts-liberation
+- sudo apt update -y || true
+- sudo apt install -y libappindicator1 fonts-liberation || true
 - wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-- sudo dpkg -i google-chrome*.deb
+- sudo dpkg -i google-chrome*.deb || true
 
 before_script:
 - npm i -g yarn
 
 script:
-- export ROOT=$PWD
-- cd $ROOT/vue-parcel
+- export root=$(pwd)
+
+# eventbus
+- cd ${root}/eventbus
+- yarn -i
+- yarn prebuild
+
+# vue-parcel
+- cd ${root}/vue-parcel
 - yarn -i
 - yarn build
+
+# others
 - >
   for path in 14-some-vuetify-app \
               13-vuetify \
@@ -46,21 +59,12 @@ script:
               01-hello-world \
               0-template; do
 
-    export TARGET="$ROOT/$path";
-    cd $TARGET;
+    cd ${root}/${path};
 
     yarn install;
     yarn predeploy;
     if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-
-    npm outdate
-    yarn upgrade
     yarn build --report
-
-    yarn global add npm-check-updates
-    rm -rf yarn.lock
-    yarn -i
-    yarn build
 
   done;
 
