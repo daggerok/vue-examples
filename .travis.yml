@@ -23,6 +23,9 @@ before_script:
 
 script:
   - export ROOT=$PWD
+  - cd $ROOT/vue-parcel
+  - yarn -i
+  - yarn build
   - >
     for path in 14-some-vuetify-app \
                 13-vuetify \

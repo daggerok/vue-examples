@@ -1,0 +1,28 @@
+{
+  "homepage": "https://daggerok.github.io/vue-examples",
+  "devDependencies": {
+    "babel-preset-env": "1.6.1",
+    "gh-pages": "1.1.0",
+    "ncp": "2.0.0",
+    "npm-run-all": "4.1.2",
+    "parcel-bundler": "1.4.1",
+    "rimraf": "2.6.2"
+  },
+  "dependencies": {
+    "hammerjs": "2.0.8",
+    "jquery": "3.2.1",
+    "materialize-css": "0.100.2",
+    "vue": "2.5.13"
+  },
+  "scripts": {
+    "start": "parcel ./app/index.html",
+    "prebuild": "yarn -i || npm i --no-optional",
+    "build": "parcel build ./app/index.html",
+    "preghpages": "npm-run-all preghpages:*",
+    "preghpages:clean": "rimraf -rf ./dist",
+    "preghpages:build": "parcel build ./app/index.html --no-cache --public-url='/vue-examples/'",
+    "preghpages:fallback": "ncp ./dist/index.html ./dist/404.html",
+    "preghpages:nojekyll": "touch ./dist/.nojekyll",
+    "ghpages": "gh-pages -d ./dist -b gh-pages -m \"Parcel Github Pages $(date +%Y-%m-%d) deployment\""
+  }
+}

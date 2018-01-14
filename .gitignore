@@ -16,6 +16,7 @@ package-lock.json
 
 # Nuxt build
 .nuxt
+.cache
 
 *-*/firebase.js
 !*-*/firebase.js.default
