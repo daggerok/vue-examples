@@ -17,3 +17,4 @@ This repository is contains some Vue.js playground project examples
 . link:14-some-vuetify-app/[Vuetify routes playground app]
 . link:vue-parcel/[Parcel Bundler]
 . link:eventbus/[eventus]
+. link:refs-work-natively-with-DOM-elements/[working with DOM elements natively]

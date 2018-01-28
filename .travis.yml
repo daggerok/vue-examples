@@ -32,6 +32,11 @@ script:
 - export root=$(pwd)
 
 # eventbus
+- cd ${root}/refs-work-natively-with-DOM-elements
+- yarn -i
+- yarn prebuild
+
+# eventbus
 - cd ${root}/eventbus
 - yarn -i
 - yarn prebuild

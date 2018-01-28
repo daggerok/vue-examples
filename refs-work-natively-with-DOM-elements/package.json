@@ -1,0 +1,95 @@
+{
+  "homepage": "https://daggerok.github.io/vue-examples",
+  "name": "refsto-native-DOM-elements",
+  "version": "0.0.1",
+  "description": "A Vue.js project",
+  "author": "Maksim Kostromin <daggerok@gmail.com>",
+  "private": true,
+  "scripts": {
+    "clean": "rimraf -rf ./dist",
+    "start": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "prebuild": "npm-run-all prebuild:*",
+    "prebuild:clean": "yarn clean",
+    "prebuild:build": "node build/build.js",
+    "prebuild:fallback": "ncp ./dist/index.html ./dist/404.html",
+    "prebuild:nojekyll": "touch ./dist/.nojekyll",
+    "build": "gh-pages -d ./dist -b gh-pages -m \"Parcel Github Pages $(date +%Y-%m-%d) deployment\""
+  },
+  "dependencies": {
+    "hammerjs": "2.0.8",
+    "jquery": "3.3.1",
+    "materialize-css": "0.100.2",
+    "vue": "2.5.13"
+  },
+  "devDependencies": {
+    "autoprefixer": "7.2.5",
+    "babel-core": "6.26.0",
+    "babel-helper-vue-jsx-merge-props": "2.0.3",
+    "babel-loader": "7.1.2",
+    "babel-plugin-syntax-jsx": "6.18.0",
+    "babel-plugin-transform-runtime": "6.23.0",
+    "babel-plugin-transform-vue-jsx": "3.5.1",
+    "babel-preset-env": "1.6.1",
+    "babel-preset-stage-2": "6.24.1",
+    "chalk": "2.3.0",
+    "copy-webpack-plugin": "4.3.1",
+    "css-loader": "0.28.9",
+    "extract-text-webpack-plugin": "3.0.2",
+    "file-loader": "1.1.6",
+    "friendly-errors-webpack-plugin": "1.6.1",
+    "gh-pages": "1.1.0",
+    "html-webpack-plugin": "2.30.1",
+    "ncp": "2.0.0",
+    "node-notifier": "5.2.1",
+    "npm-run-all": "4.1.2",
+    "optimize-css-assets-webpack-plugin": "3.2.0",
+    "ora": "1.3.0",
+    "portfinder": "1.0.13",
+    "postcss-import": "11.0.0",
+    "postcss-loader": "2.0.10",
+    "postcss-url": "7.3.0",
+    "rimraf": "2.6.2",
+    "semver": "5.5.0",
+    "shelljs": "0.8.1",
+    "uglifyjs-webpack-plugin": "1.1.6",
+    "url-loader": "0.6.2",
+    "vue-loader": "13.7.0",
+    "vue-style-loader": "3.1.1",
+    "vue-template-compiler": "2.5.13",
+    "webpack": "3.10.0",
+    "webpack-bundle-analyzer": "2.9.2",
+    "webpack-dev-server": "2.11.1",
+    "webpack-merge": "4.1.1"
+  },
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 3.0.0"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "modules": false,
+          "targets": {
+            "browsers": [
+              "> 1%",
+              "last 2 versions",
+              "not ie <= 8"
+            ]
+          }
+        }
+      ],
+      "stage-2"
+    ],
+    "plugins": [
+      "transform-vue-jsx",
+      "transform-runtime"
+    ]
+  }
+}
