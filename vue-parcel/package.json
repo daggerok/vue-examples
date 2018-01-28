@@ -18,12 +18,12 @@
     "start": "parcel ./app/index.html",
     "prebuild": "yarn -i || npm i --no-optional",
     "build": "parcel build ./app/index.html",
-    "prepredeploy": "npm-run-all prepredeploy:*",
-    "prepredeploy:clean": "rimraf -rf ./dist",
-    "prepredeploy:build": "parcel build ./app/index.html --no-cache --public-url='/vue-examples/'",
-    "prepredeploy:fallback": "ncp ./dist/index.html ./dist/404.html",
-    "prepredeploy:nojekyll": "touch ./dist/.nojekyll",
-    "predeploy": "gh-pages -d ./dist -b gh-pages -m \"Parcel Github Pages $(date +%Y-%m-%d) deployment\""
+    "predeploy": "npm-run-all predeploy:*",
+    "predeploy:clean": "rimraf -rf ./dist",
+    "predeploy:build": "parcel build ./app/index.html --no-cache --public-url='/vue-examples/'",
+    "predeploy:fallback": "ncp ./dist/index.html ./dist/404.html",
+    "predeploy:nojekyll": "touch ./dist/.nojekyll",
+    "deploy": "gh-pages -d ./dist -b gh-pages -m \"Parcel Github Pages $(date +%Y-%m-%d) deployment\""
   },
   "babel": {
     "presets": [
