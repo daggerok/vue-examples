@@ -8,12 +8,13 @@
   "scripts": {
     "clean": "rimraf -rf ./dist",
     "start": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "prebuild": "npm-run-all prebuild:*",
-    "prebuild:clean": "yarn clean",
-    "prebuild:build": "node build/build.js",
-    "prebuild:fallback": "ncp ./dist/index.html ./dist/404.html",
-    "prebuild:nojekyll": "touch ./dist/.nojekyll",
-    "build": "gh-pages -d ./dist -b gh-pages -m \"Parcel Github Pages $(date +%Y-%m-%d) deployment\""
+    "build": "node build/build.js",
+    "predeploy": "npm-run-all predeploy:*",
+    "predeploy:clean": "yarn clean",
+    "predeploy:build": "yarn build",
+    "predeploy:fallback": "ncp ./dist/index.html ./dist/404.html",
+    "predeploy:nojekyll": "touch ./dist/.nojekyll",
+    "deploy": "gh-pages -d ./dist -b gh-pages -m \"Parcel Github Pages $(date +%Y-%m-%d) deployment\""
   },
   "dependencies": {
     "hammerjs": "2.0.8",

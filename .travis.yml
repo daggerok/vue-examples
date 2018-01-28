@@ -32,20 +32,16 @@ before_install:
 script:
 - export root=$(pwd)
 
-# eventbus
-- cd ${root}/refs-work-natively-with-DOM-elements
-- yarn -i
-- yarn prebuild
-
-# eventbus
-- cd ${root}/eventbus
-- yarn -i
-- yarn prebuild
-
-# vue-parcel
-- cd ${root}/vue-parcel
-- yarn -i
-- yarn build
+- >
+  for path in \
+    refs-work-natively-with-DOM-elements \
+    eventbus \
+    vue-parcel \
+  ; do
+    cd ${root}/${path}
+    yarn -i
+    yarn predeploy
+  done
 
 # others
 # - >
@@ -64,14 +60,14 @@ script:
 #               02-todo-list \
 #               01-hello-world \
 #               0-template; do
-# 
+#
 #     cd ${root}/${path};
-# 
+#
 #     yarn install;
 #     yarn predeploy;
 #     if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
 #     yarn build --report
-# 
+#
 #   done;
 
 cache:
