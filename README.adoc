@@ -18,3 +18,7 @@ This repository is contains some Vue.js playground project examples
 . link:vue-parcel/[Parcel Bundler]
 . link:eventbus/[eventus]
 . link:refs-work-natively-with-DOM-elements/[working with DOM elements natively]
+
+links:
+
+. link:https://metanit.com/[rubooks]
