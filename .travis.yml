@@ -3,7 +3,7 @@ group: travis_lts
 
 env:
   global:
-    TERM=dumb
+  - TERM=dumb
 
 language: node_js
 

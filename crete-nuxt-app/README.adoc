@@ -1,0 +1,39 @@
+= create-nuxt-app
+
+create nuxt app using `create-nuxt-app` package
+[source,bash]
+----
+npm i -g -E create-nuxt-app
+create-nuxt-app create-nuxt-app
+> Generating Nuxt.js project in .../create-nuxt-app
+? Project name create-nuxt-app
+? Project description My geometric Nuxt.js project
+? Use a custom server framework none
+? Use a custom UI framework vuetify
+? Choose rendering mode Single Page App
+? Use axios module yes
+? Use eslint no
+? Author name Maksim Kostromin
+? Choose a package manager yarn
+Initialized empty Git repository in /private/tmp/create-nuxt-app/.git/
+yarn install v1.6.0
+info No lockfile found.
+[1/4] 🔍  Resolving packages...
+[2/4] 🚚  Fetching packages...
+[3/4] 🔗  Linking dependencies...
+warning " > vuetify@0.17.7" has unmet peer dependency "vue@^2.5.0".
+[4/4] 📃  Building fresh packages...
+success Saved lockfile.
+✨  Done in 19.01s.
+
+  To get started:
+
+    cd create-nuxt-app
+    npm run dev
+
+  To build & start for production:
+
+    cd create-nuxt-app
+    npm run build
+    npm start
+----
