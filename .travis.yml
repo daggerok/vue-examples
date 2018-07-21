@@ -11,7 +11,6 @@ addons:
     - fonts-liberation
     - libappindicator1
     - google-chrome-stable
-    - yarn
 
 install: true
 before_install:
