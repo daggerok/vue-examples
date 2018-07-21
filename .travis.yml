@@ -50,8 +50,6 @@ script:
               01-hello-world \
               0-template; do
     cd ${root}/${path};
-    cp firebase.js.default firebase.js || true
-    cp firebase.config.js.default firebase.config.js || true
     yarn install;
     yarn predeploy;
     if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
