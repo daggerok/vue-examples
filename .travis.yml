@@ -37,32 +37,28 @@ script:
     yarn predeploy
   done
 
-# others
-# - >
-#   for path in 14-some-vuetify-app \
-#               13-vuetify \
-#               12-vuetifyjs-setup \
-#               11-firebase-using-vuefire \
-#               10-responsive-web-design \
-#               09-nuxt-server-side-rendering \
-#               08-vuex-map-getters-and-map-actions \
-#               07-vue-material \
-#               06-materialize-css \
-#               05-vuex-contact-list \
-#               04-vuex-counter-todo \
-#               03-hello-vuex \
-#               02-todo-list \
-#               01-hello-world \
-#               0-template; do
-#
-#     cd ${root}/${path};
-#
-#     yarn install;
-#     yarn predeploy;
-#     if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-#     yarn build --report
-#
-#   done;
+- >
+  for path in 14-some-vuetify-app \
+              13-vuetify \
+              12-vuetifyjs-setup \
+              11-firebase-using-vuefire \
+              10-responsive-web-design \
+              09-nuxt-server-side-rendering \
+              08-vuex-map-getters-and-map-actions \
+              07-vue-material \
+              06-materialize-css \
+              05-vuex-contact-list \
+              04-vuex-counter-todo \
+              03-hello-vuex \
+              02-todo-list \
+              01-hello-world \
+              0-template; do
+    cd ${root}/${path};
+    yarn install;
+    yarn predeploy;
+    if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+    yarn build --report
+  done;
 
 cache:
   directories:
