@@ -25,7 +25,7 @@ before_install:
 
 script:
 - export root=$(pwd)
-
+#
 - >
   for path in \
     refs-work-natively-with-DOM-elements \
@@ -36,13 +36,9 @@ script:
     yarn -i
     yarn predeploy
   done
-
+#
 - >
-  for path in 14-some-vuetify-app \
-              13-vuetify \
-              12-vuetifyjs-setup \
-              11-firebase-using-vuefire \
-              10-responsive-web-design \
+  for path in 10-responsive-web-design \
               09-nuxt-server-side-rendering \
               08-vuex-map-getters-and-map-actions \
               07-vue-material \
@@ -55,6 +51,28 @@ script:
               0-template; do
     cd ${root}/${path};
     cp firebase.js.default firebase.js || true
+    cp firebase.config.js.default firebase.config.js || true
+    yarn install;
+    yarn predeploy;
+    if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+    yarn build --report
+  done;
+# firebase.js
+- >
+  for path in 12-vuetifyjs-setup \
+              11-firebase-using-vuefire; do
+    cd ${root}/${path};
+    cp firebase.js.default firebase.js || true
+    yarn install;
+    yarn predeploy;
+    if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+    yarn build --report
+  done;
+# firebase.config.js
+- >
+  for path in 14-some-vuetify-app \
+              13-vuetify; do
+    cd ${root}/${path};
     cp firebase.config.js.default firebase.config.js || true
     yarn install;
     yarn predeploy;
