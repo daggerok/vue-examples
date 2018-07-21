@@ -22,3 +22,5 @@ package-lock.json
 !*-*/firebase.js.default
 *-*/firebase.config.js
 !*-*/firebase.config.js.default
+
+/target/
