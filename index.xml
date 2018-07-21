@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?asciidoc-toc maxdepth="4"?>
+<?asciidoc-numbered?>
+<book xmlns="http://docbook.org/ns/docbook" xmlns:xl="http://www.w3.org/1999/xlink" version="5.0" xml:lang="en">
+<info>
+<title>vue-examples (0.0.1) <inlinemediaobject>
+<imageobject>
+<imagedata fileref="https://travis-ci.org/daggerok/root-project-name.svg?branch=master"/>
+</imageobject>
+<textobject><phrase>Build Status</phrase></textobject>
+</inlinemediaobject></title>
+<date>2018-07-21 16:32:12 UTC</date>
+<author>
+<personname>
+<firstname>Maksim</firstname>
+<surname>Kostromin</surname>
+</personname>
+<email>daggerok@gmail.com</email>
+</author>
+<authorinitials>MK</authorinitials>
+<revhistory>
+<revision>
+<revnumber>0.0.1</revnumber>
+<date>2018-07-21 16:32:12 UTC</date>
+<authorinitials>MK</authorinitials>
+</revision>
+</revhistory>
+</info>
+<preface>
+<title></title>
+<simpara>Travis CI status:
+<inlinemediaobject>
+<imageobject>
+<imagedata fileref="https://travis-ci.org/daggerok/vue-examples.svg?branch=master"/>
+</imageobject>
+<textobject><phrase>Build Status</phrase></textobject>
+</inlinemediaobject></simpara>
+</preface>
+<chapter xml:id="introduction">
+<title>Introduction</title>
+
+</chapter>
+<part xml:id="vue-examples-inlinemediaobject-imageobject-imagedata-fileref-https-travis-ci-org-daggerok-vue-examples-svg-branch-master-imageobject-textobject-phrase-build-status-phrase-textobject-inlinemediaobject">
+<title>vue-examples <inlinemediaobject>
+<imageobject>
+<imagedata fileref="https://travis-ci.org/daggerok/vue-examples.svg?branch=master"/>
+</imageobject>
+<textobject><phrase>Build Status</phrase></textobject>
+</inlinemediaobject></title>
+<partintro>
+<simpara>This repository is contains some Vue.js playground project examples</simpara>
+<itemizedlist>
+<listitem>
+<simpara><link xl:href="01-hello-world/">Hello Vue.js</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="02-todo-list/">TODO App</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="03-hello-vuex/">Hello Vuex (uni-directional data flow)</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="04-vuex-counter-todo/">Vuex SPA including Counter and TODO App</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="05-vuex-contact-list/">Vuex Contact List App</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="06-materialize-css/">Vue.js + materialize-css (+ jquery)</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="07-vue-material/">Vue.js + vue-material (+ jquery)</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="08-vuex-map-getters-and-map-actions/">Using vuex mapGetters and mapActions</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="09-nuxt-server-side-rendering/">Nuxt.js server-side rendering using Vue.js</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="10-responsive-web-design/">Responsive web design playground using Nuxt.js</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="11-firebase-using-vuefire/">Firebase App using vuefire</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="13-vuetify/">Vuetify</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="14-some-vuetify-app/">Vuetify routes playground app</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="vue-parcel/">Parcel Bundler</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="eventbus/">eventus</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="refs-work-natively-with-DOM-elements/">working with DOM elements natively</link></simpara>
+</listitem>
+</itemizedlist>
+<simpara>links:</simpara>
+<itemizedlist>
+<listitem>
+<simpara><link xl:href="https://metanit.com/">rubooks</link></simpara>
+</listitem>
+</itemizedlist>
+</partintro>
+<chapter xml:id="links">
+<title>Links</title>
+<itemizedlist>
+<listitem>
+<simpara><link xl:href="https://github.com/daggerok/vue-examples">GitHub repo</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://daggerok.github.io/vue-examples">GitHub pages</link></simpara>
+</listitem>
+</itemizedlist>
+</chapter>
+</part>
+</book>
