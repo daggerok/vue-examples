@@ -1,0 +1,26 @@
+{
+  "scripts": {
+    "start": "parcel serve src/",
+    "build": "parcel build src/index.html"
+  },
+  "name": "vue-app",
+  "version": "1.0.0",
+  "main": "index.js",
+  "keywords": [],
+  "author": "Maksim Kostromin <daggerok@gmail.com> (https://github.com/daggerok)",
+  "license": "MIT",
+  "description": "",
+  "devDependencies": {
+    "@vue/component-compiler-utils": "2.0.0",
+    "babel-preset-env": "1.7.0",
+    "babel-preset-stage-0": "6.24.1",
+    "babel-preset-vue": "2.0.2",
+    "parcel-bundler": "1.9.3",
+    "vue-template-compiler": "2.5.16"
+  },
+  "dependencies": {
+    "babel-polyfill": "6.26.0",
+    "vue": "2.5.16",
+    "vue-hot-reload-api": "2.3.0"
+  }
+}

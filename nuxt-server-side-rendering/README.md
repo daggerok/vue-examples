@@ -1,4 +1,4 @@
-# 09-nuxt-server-side-rendering
+# nuxt-server-side-rendering
 
 Github pages deployment:
 

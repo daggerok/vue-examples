@@ -28,6 +28,7 @@ script:
 #
 - >
   for path in \
+    vue-bootstrap-css \
     refs-work-natively-with-DOM-elements \
     eventbus \
     vue-parcel \
@@ -38,17 +39,22 @@ script:
   done
 #
 - >
-  for path in 10-responsive-web-design \
-              09-nuxt-server-side-rendering \
-              08-vuex-map-getters-and-map-actions \
-              07-vue-material \
-              06-materialize-css \
-              05-vuex-contact-list \
-              04-vuex-counter-todo \
-              03-hello-vuex \
-              02-todo-list \
-              01-hello-world \
-              0-template; do
+  for path in some-vuetify-app \
+              vuetify \
+              vuetifyjs-setup \
+              firebase-using-vuefire \
+              responsive-web-design \
+              nuxt-server-side-rendering \
+              vuex-map-getters-and-map-actions \
+              vue-material \
+              materialize-css \
+              vuex-contact-list \
+              vuex-counter-todo \
+              hello-vuex \
+              todo-list \
+              hello-world \
+              template \
+  ; do
     cd ${root}/${path};
     yarn install;
     yarn predeploy;

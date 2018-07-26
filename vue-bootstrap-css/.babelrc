@@ -1,0 +1,11 @@
+{
+  "presets": [
+    ["env", {
+      "targets": {
+        "browsers": ["last 2 versions", "safari >= 7", "chrome >= 36", "firefox >= 28"]
+      }
+    }],
+    "vue",
+    "stage-0"
+  ]
+}

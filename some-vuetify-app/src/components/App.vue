@@ -36,7 +36,7 @@
         <v-btn flat="">
           <i class="fa icon fa-github" />
           <a class="btn__content text-decoration--none"
-             href="https://github.com/daggerok/vue-examples/tree/master/13-vuetify">
+             href="https://github.com/daggerok/vue-examples/tree/master/vuetify">
             GitHub
           </a>
         </v-btn>

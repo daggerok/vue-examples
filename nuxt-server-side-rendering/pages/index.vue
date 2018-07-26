@@ -4,7 +4,7 @@
     <div>
       <logo/>
       <h1 class="title">
-        09-nuxt-server-side-rendering
+        nuxt-server-side-rendering
       </h1>
       <h2 class="subtitle">
         Nuxt.js server-side rendenring with Vue.js
