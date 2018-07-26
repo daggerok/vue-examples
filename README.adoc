@@ -2,6 +2,7 @@
 
 This repository is contains some Vue.js playground project examples
 
+- link:./vue-bootstrap-css/[Bootstrap | Tachyons | Vue]
 - link:hello-world/[Hello Vue.js]
 - link:todo-list/[TODO App]
 - link:hello-vuex/[Hello Vuex (uni-directional data flow)]
