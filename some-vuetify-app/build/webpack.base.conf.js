@@ -3,7 +3,7 @@ const utils = require('./utils');
 const config = require('../config');
 const vueLoaderConfig = require('./vue-loader.conf');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const { BaseHrefWebpackPlugin } = require('base-href-webpack-plugin');
+const { isGhPages } = require('./env');
 
 function resolve(dir) {
   return path.join(__dirname, '..', dir);
@@ -16,7 +16,7 @@ module.exports = {
   output: {
     path: config.build.assetsRoot,
     filename: '[name].js',
-    publicPath: process.env.NODE_ENV === 'production'
+    publicPath: isGhPages
       ? config.build.assetsPublicPath
       : config.dev.assetsPublicPath
   },
@@ -24,11 +24,6 @@ module.exports = {
     new  CopyWebpackPlugin([
       { from: 'service-worker' }
     ]),
-    new BaseHrefWebpackPlugin({
-      baseHref: process.env.NODE_ENV === 'production'
-        ? config.build.assetsPublicPath
-        : config.dev.assetsPublicPath,
-    }),
   ],
   resolve: {
     extensions: ['.js', '.vue', '.json'],

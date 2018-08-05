@@ -14,7 +14,7 @@ module.exports = {
   'rules': {
     'arrow-parens': 0,
     'generator-star-spacing': 0,
-    'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+    'no-debugger': 0,
     'semi': 0,
     'no-unused-expressions': 0,
     'no-unused-vars': 0,
