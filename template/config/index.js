@@ -1,5 +1,6 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
 var path = require('path');
+const {isGhPages } = require('../build/env');
 
 module.exports = {
   build: {
@@ -26,7 +27,7 @@ module.exports = {
     port: 8080,
     autoOpenBrowser: true,
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: isGhPages ? '/vue-examples/' : '/',
     proxyTable: {},
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README
