@@ -1,7 +1,7 @@
 'use strict';
 // Template version: 1.3.1
 // see http://vuejs-templates.github.io/webpack for documentation.
-
+const { isGhPages } = require('../build/env');
 const path = require('path');
 
 module.exports = {
@@ -42,7 +42,7 @@ module.exports = {
     // Paths
     assetsRoot: path.resolve(__dirname, '../dist'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/vue-examples/',
+    assetsPublicPath: isGhPages ? '/vue-examples/' : '/',
 
     /**
      * Source Maps
