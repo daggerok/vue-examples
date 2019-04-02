@@ -12,7 +12,7 @@
     "lint": "eslint --ext .js,.vue src",
     "preserve": "yarn build",
     "serve": "npm-run-all -p serve:*",
-    "serve:serve": "serve --cors --open --single --port 3000 --ignore 'node_modules,.idea' ./dist",
+    "serve:serve": "serve --single --port 3000 ./dist",
     "serve:livereload": "livereload",
     "predeploy": "npm i; npm-run-all predeploy:*",
     "predeploy:build": "cross-env GH_PAGES=true yarn build",
