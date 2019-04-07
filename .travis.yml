@@ -31,7 +31,6 @@ script:
     vue-bootstrap-css \
     refs-work-natively-with-DOM-elements \
     eventbus \
-    vue-parcel \
   ; do
     cd ${root}/${path}
     yarn -i
