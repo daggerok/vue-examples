@@ -76,7 +76,7 @@ export const actions = {
 
 ```javascript
 export const actions = {
-  incrementCounterAction: ({ commit }) => commit('decrementCounterMutation'),
+  decrementCounterAction: ({ commit }) => commit('decrementCounterMutation'),
   incrementCounterAction: ({ commit }) => commit('incrementCounterMutation'),
 };
 ```
