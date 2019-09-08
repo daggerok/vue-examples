@@ -38,13 +38,13 @@ before_install:
 jobs:
   include:
 
-  - stage: test
-    node_js: lts/*
-    name: vue-bootstrap-css
-    script:
-    - cd ${root}/vue-bootstrap-css
-    - yarn -i
-    - yarn predeploy
+#  - stage: test
+#    node_js: lts/*
+#    name: vue-bootstrap-css
+#    script:
+#    - cd ${root}/vue-bootstrap-css
+#    - yarn -i
+#    - yarn predeploy
 
   - stage: test
     node_js: lts/*
@@ -214,9 +214,9 @@ jobs:
 
   - stage: test
     node_js: lts/*
-    name: 12-vuetifyjs-setup
+    name: vuetifyjs-setup
     script:
-    - cd ${root}/12-vuetifyjs-setup
+    - cd ${root}/vuetifyjs-setup
     - cp firebase.js.default firebase.js || true
     - yarn install;
     - yarn predeploy;
@@ -225,9 +225,9 @@ jobs:
 
   - stage: test
     node_js: lts/*
-    name: 11-firebase-using-vuefire
+    name: firebase-using-vuefire
     script:
-    - cd ${root}/11-firebase-using-vuefire
+    - cd ${root}/firebase-using-vuefire
     - cp firebase.js.default firebase.js || true
     - yarn install;
     - yarn predeploy;
@@ -236,9 +236,9 @@ jobs:
 
   - stage: test
     node_js: lts/*
-    name: 14-some-vuetify-app
+    name: some-vuetify-app
     script:
-    - cd ${root}/14-some-vuetify-app
+    - cd ${root}/some-vuetify-app
     - cp firebase.config.js.default firebase.config.js || true
     - yarn install;
     - yarn predeploy;
@@ -247,9 +247,9 @@ jobs:
 
   - stage: test
     node_js: lts/*
-    name: 13-vuetify
+    name: vuetify
     script:
-    - cd ${root}/13-vuetify
+    - cd ${root}/vuetify
     - cp firebase.config.js.default firebase.config.js || true
     - yarn install;
     - yarn predeploy;
