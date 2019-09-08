@@ -3,7 +3,6 @@ jdk: oraclejdk8
 language: node_js
 node_js: lts/*
 
-dist: xenial
 notifications:
   email: false
 git:
@@ -262,7 +261,7 @@ jobs:
     env:
       global:
       - TERM=dumb
-      - secure: g80MSLgxtVqyYayEga+2JMTg/2MdLxmcdqefk42scs8iPgnLVgkZKrRnlqVN5qDcrsnV558ehIOSypWX3xnFILOm3/DktqMJ0NJ1tCOiDdxbcYIlm3vE5Sn1zkSh2W2hzNqoYTRv1rrE2bMggLZIvzHZYPpvP5ugReIoZSxyu6Aj8gjYWoVWN7xI4QTcPnIxXlEDcRdqATJIdjNCFB0lNNJHmvNgy843eGKcwgrCrzLLzyCSIrB/VWfaqezvjPZMITVXl0ol0OmglIgmwFPLUTwDTOgv7lPGsfLz0jugi4z1dIpG4dR4bgMjX2WnUrpTPu/tkNMvOfWshoqbpYZRzSGRK81OuIDUwCRC48I4ErMzgukH5sX732nL1wWfQaYMmppLKLvADMdVBzPILd9Y06k8whH6SqxN+8AfF5UcyGMMYmRpTOqu1G94ppQLTS+KLkW6vi0PZDz4IydwkYSJthr2fKMngNXloN1e4CQVYR8TTkHFcK3AaNGi44sLIFtXmQ0q4U9SmJBO7O56l7JvzekLq1vPelwK9kC8Hz82jGk54pkRBIm8j7n166UC9nsb6nl7PKvpBnFj0bUQdTEV4LtWDMLLiurk/Y4ygzgq653wzDrR7x7hELgkD09/UxsuweTRpgkPFQFCzQKuHafs0KUqLEL3pdWnvyBxagsNzNU=
+      - secure: oP/muOICK9B+4eYo8V8AQJqJ0iqy2n9s2n+5XUJPDJh04PZdG/jRp5mpoHATdSqrCEoREuvP1HAww8mNCiZRjN1pMbKE6v6LvtuRYURpm3Uctnbgf6m3pA95upcf48TsHLPr30seQge0lwR39dx+PQ0bbsfywR81MzPu+gT2ExbxMg70MOOf2tILIGAPKkk/Zishf7an17VzgFDJZLLq8fZaKFbFE5jgA5OMU7lgSUrQadhXTgRWT6kUmt7pPByovLinzBZVl/wBbyoxcxF3HSNaLcUSgWXDTDfQHeRDblS78ERtQ+ywBEN9dPv9cwTrxgZcr5laAQjIJ22HNGyLT2gxodlxRs3awp7zY2aNsdcrnbNNSTh2gfZ2r3yd/CDkuNU46W5QsfLpvEgJlacle4JM91afCoYj2OFFSx09UHfp9kPbRwuXerhgIWuYGUwQ15dXR0csxxqLJYslDK8XucKGrPIxo8gi4+/cKeKLotR7b5VXEjdrZtRfnbWU4htYMcb+1nGItKmYyK2eFb4ShOhS2lXRhEGwzAOhn8C5MGKdABpaPLcBHcAyUpGFl76B4nRU4kXKyKPKBJoBs36eZMBYgsiKwZ8UD9id0WIHLAQInbXzvh4SbmClJV4SFwcIroKkGv+iQdRvFA21d0v1teYTHAeHot4bKVGVEaODP/M=
     script: skip
     if: branch = "master" AND type NOT IN (pull_request)
     before_deploy:
@@ -271,7 +270,6 @@ jobs:
     # publish tag release
     - mkdir -p ${HOME}/.m2
     - set -e
-    before_deploy:
     - cd ${root}
     - ./mvnw -Pdocs
     deploy:
