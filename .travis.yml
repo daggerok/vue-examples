@@ -3,10 +3,21 @@ jdk: oraclejdk8
 language: node_js
 node_js: lts/*
 
+dist: xenial
+notifications:
+  email: false
+git:
+  quiet: true
+  depth: 3
+
+service:
+  - xvfb
+
 addons:
   apt:
     update: true
     packages:
+    - bash
     - curl
     - fonts-liberation
     - libappindicator1
@@ -22,88 +33,127 @@ before_install:
 - echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 - sudo apt update -y || true
 - sudo apt install --no-install-recommends -y yarn
-
-script:
+#
 - export root=$(pwd)
-#
-- >
-  for path in \
-    vue-bootstrap-css \
-    refs-work-natively-with-DOM-elements \
-    eventbus \
-  ; do
-    cd ${root}/${path}
-    yarn -i
-    yarn predeploy
-  done
-#
-- >
-  for path in some-vuetify-app \
-              vuetify \
-              vuetifyjs-setup \
-              firebase-using-vuefire \
-              responsive-web-design \
-              nuxt-server-side-rendering \
-              vuex-map-getters-and-map-actions \
-              vue-material \
-              materialize-css \
-              vuex-contact-list \
-              vuex-counter-todo \
-              hello-vuex \
-              todo-list \
-              hello-world \
-              template \
-  ; do
-    cd ${root}/${path};
-    yarn install;
-    yarn predeploy;
-    if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    yarn build --report
-  done;
-# firebase.js
-- >
-  for path in 12-vuetifyjs-setup \
-              11-firebase-using-vuefire; do
-    cd ${root}/${path};
-    cp firebase.js.default firebase.js || true
-    yarn install;
-    yarn predeploy;
-    if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    yarn build --report
-  done;
-# firebase.config.js
-- >
-  for path in 14-some-vuetify-app \
-              13-vuetify; do
-    cd ${root}/${path};
-    cp firebase.config.js.default firebase.config.js || true
-    yarn install;
-    yarn predeploy;
-    if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    yarn build --report
-  done;
+
+jobs:
+  include:
+
+  - stage: test
+    node_js: lts/*
+    name: vue-bootstrap-css
+    script:
+    - cd ${root}/${path}
+    - yarn -i
+    - yarn predeploy
+
+  - stage: test
+    node_js: lts/*
+    name: refs-work-natively-with-DOM-elements
+    script:
+    - cd ${root}/${path}
+    - yarn -i
+    - yarn predeploy
+
+  - stage: test
+    node_js: lts/*
+    name: eventbus
+    script:
+    - cd ${root}/${path}
+    - yarn -i
+    - yarn predeploy
+
+  - stage: test
+    node_js: lts/*
+    name: bunch of tests
+    script:
+    - >
+      for path in some-vuetify-app \
+                  vuetify \
+                  vuetifyjs-setup \
+                  firebase-using-vuefire \
+                  responsive-web-design \
+                  nuxt-server-side-rendering \
+                  vuex-map-getters-and-map-actions \
+                  vue-material \
+                  materialize-css \
+                  vuex-contact-list \
+                  vuex-counter-todo \
+                  hello-vuex \
+                  todo-list \
+                  hello-world \
+                  template \
+      ; do
+        cd ${root}/${path};
+        yarn install;
+        yarn predeploy;
+        if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+        yarn build --report
+      done;
+
+  - stage: test
+    node_js: lts/*
+    name: firebase.js
+    script:
+    - >
+      for path in 12-vuetifyjs-setup \
+                  11-firebase-using-vuefire; do
+        cd ${root}/${path};
+        cp firebase.js.default firebase.js || true
+        yarn install;
+        yarn predeploy;
+        if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+        yarn build --report
+      done;
+
+  - stage: test
+    node_js: lts/*
+    name: firebase.config.js
+    script:
+    - >
+      for path in 14-some-vuetify-app \
+                  13-vuetify; do
+        cd ${root}/${path};
+        cp firebase.config.js.default firebase.config.js || true
+        yarn install;
+        yarn predeploy;
+        if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+        yarn build --report
+      done;
+
+  - stage: deploy
+    jdk: openjdk11
+    name: GitHub release and GitHub pages deployment (openjdk11)
+    env:
+      global:
+      - TERM=dumb
+      - secure: g80MSLgxtVqyYayEga+2JMTg/2MdLxmcdqefk42scs8iPgnLVgkZKrRnlqVN5qDcrsnV558ehIOSypWX3xnFILOm3/DktqMJ0NJ1tCOiDdxbcYIlm3vE5Sn1zkSh2W2hzNqoYTRv1rrE2bMggLZIvzHZYPpvP5ugReIoZSxyu6Aj8gjYWoVWN7xI4QTcPnIxXlEDcRdqATJIdjNCFB0lNNJHmvNgy843eGKcwgrCrzLLzyCSIrB/VWfaqezvjPZMITVXl0ol0OmglIgmwFPLUTwDTOgv7lPGsfLz0jugi4z1dIpG4dR4bgMjX2WnUrpTPu/tkNMvOfWshoqbpYZRzSGRK81OuIDUwCRC48I4ErMzgukH5sX732nL1wWfQaYMmppLKLvADMdVBzPILd9Y06k8whH6SqxN+8AfF5UcyGMMYmRpTOqu1G94ppQLTS+KLkW6vi0PZDz4IydwkYSJthr2fKMngNXloN1e4CQVYR8TTkHFcK3AaNGi44sLIFtXmQ0q4U9SmJBO7O56l7JvzekLq1vPelwK9kC8Hz82jGk54pkRBIm8j7n166UC9nsb6nl7PKvpBnFj0bUQdTEV4LtWDMLLiurk/Y4ygzgq653wzDrR7x7hELgkD09/UxsuweTRpgkPFQFCzQKuHafs0KUqLEL3pdWnvyBxagsNzNU=
+    script: skip
+    if: branch = "master" AND type NOT IN (pull_request)
+    before_deploy:
+    - if [ "$TRAVIS_PULL_REQUEST" != "false" ] || [ ".$TRAVIS_BRANCH" != ".master" ] ; then exit 0 ; fi
+    - env
+    # publish tag release
+    - mkdir -p ${HOME}/.m2
+    - set -e
+    before_deploy:
+    - cd ${root}
+    - ./mvnw -Pdocs
+    deploy:
+      provider: pages
+      skip-cleanup: true
+      # travis encrypt GITHUB_TOKEN=<your github repo token> --add
+      github-token: "$GITHUB_TOKEN"
+      keep-history: true
+      on:
+        branch: master
+      local-dir: target/generated-docs
+      target_branch: gh-pages
 
 cache:
+  npm: true
+  yarn: true
+  packages: true
   directories:
   - node_modules/
   - $HOME/.npm
-
-env:
-  global:
-  - TERM=dumb
-  - secure: g80MSLgxtVqyYayEga+2JMTg/2MdLxmcdqefk42scs8iPgnLVgkZKrRnlqVN5qDcrsnV558ehIOSypWX3xnFILOm3/DktqMJ0NJ1tCOiDdxbcYIlm3vE5Sn1zkSh2W2hzNqoYTRv1rrE2bMggLZIvzHZYPpvP5ugReIoZSxyu6Aj8gjYWoVWN7xI4QTcPnIxXlEDcRdqATJIdjNCFB0lNNJHmvNgy843eGKcwgrCrzLLzyCSIrB/VWfaqezvjPZMITVXl0ol0OmglIgmwFPLUTwDTOgv7lPGsfLz0jugi4z1dIpG4dR4bgMjX2WnUrpTPu/tkNMvOfWshoqbpYZRzSGRK81OuIDUwCRC48I4ErMzgukH5sX732nL1wWfQaYMmppLKLvADMdVBzPILd9Y06k8whH6SqxN+8AfF5UcyGMMYmRpTOqu1G94ppQLTS+KLkW6vi0PZDz4IydwkYSJthr2fKMngNXloN1e4CQVYR8TTkHFcK3AaNGi44sLIFtXmQ0q4U9SmJBO7O56l7JvzekLq1vPelwK9kC8Hz82jGk54pkRBIm8j7n166UC9nsb6nl7PKvpBnFj0bUQdTEV4LtWDMLLiurk/Y4ygzgq653wzDrR7x7hELgkD09/UxsuweTRpgkPFQFCzQKuHafs0KUqLEL3pdWnvyBxagsNzNU=
-
-before_deploy:
-- cd ${root}
-- ./mvnw -Pdocs
-
-deploy:
-  provider: pages
-  skip-cleanup: true
-  # travis encrypt GITHUB_TOKEN=<your github repo token> --add
-  github-token: "$GITHUB_TOKEN"
-  keep-history: true
-  on:
-    branch: master
-  local-dir: target/generated-docs
-  target_branch: gh-pages
