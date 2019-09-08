@@ -1,4 +1,4 @@
-= {root-project-name} ({project-version}) image:https://travis-ci.org/daggerok/root-project-name.svg?branch=master["Build Status", link=github-url]
+= {root-project-name} ({project-version}) image:https://travis-ci.org/daggerok/{root-project-name}.svg?branch=master["Build Status", link={github-url}]
 Maksim Kostromin <daggerok@gmail.com>
 {docdatetime}
 :doctype: book
