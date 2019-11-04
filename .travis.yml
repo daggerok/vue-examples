@@ -2,19 +2,13 @@ env:
   global:
   - TERM=dumb
   - secure: oP/muOICK9B+4eYo8V8AQJqJ0iqy2n9s2n+5XUJPDJh04PZdG/jRp5mpoHATdSqrCEoREuvP1HAww8mNCiZRjN1pMbKE6v6LvtuRYURpm3Uctnbgf6m3pA95upcf48TsHLPr30seQge0lwR39dx+PQ0bbsfywR81MzPu+gT2ExbxMg70MOOf2tILIGAPKkk/Zishf7an17VzgFDJZLLq8fZaKFbFE5jgA5OMU7lgSUrQadhXTgRWT6kUmt7pPByovLinzBZVl/wBbyoxcxF3HSNaLcUSgWXDTDfQHeRDblS78ERtQ+ywBEN9dPv9cwTrxgZcr5laAQjIJ22HNGyLT2gxodlxRs3awp7zY2aNsdcrnbNNSTh2gfZ2r3yd/CDkuNU46W5QsfLpvEgJlacle4JM91afCoYj2OFFSx09UHfp9kPbRwuXerhgIWuYGUwQ15dXR0csxxqLJYslDK8XucKGrPIxo8gi4+/cKeKLotR7b5VXEjdrZtRfnbWU4htYMcb+1nGItKmYyK2eFb4ShOhS2lXRhEGwzAOhn8C5MGKdABpaPLcBHcAyUpGFl76B4nRU4kXKyKPKBJoBs36eZMBYgsiKwZ8UD9id0WIHLAQInbXzvh4SbmClJV4SFwcIroKkGv+iQdRvFA21d0v1teYTHAeHot4bKVGVEaODP/M=
-
 language: node_js
 node_js: lts/*
-
 notifications:
   email: false
 git:
   quiet: true
-  depth: 3
-
-service:
-  - xvfb
-
+  depth: false
 addons:
   apt:
     update: true
@@ -24,195 +18,192 @@ addons:
     - fonts-liberation
     - libappindicator1
     - google-chrome-stable
-
 install: true
+services: xvfb
 before_install:
 - export CHROME_BIN=/usr/bin/google-chrome
 - export DISPLAY=:99.0
 #
-- curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-- echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-- sudo apt update -y || true
-- sudo apt install --no-install-recommends -y yarn
-#
 - export root=$(pwd)
-
+- npm i -f -g -ED node-gyp
 jobs:
   include:
-
 #  - stage: test
 #    node_js: lts/*
 #    name: vue-bootstrap-css
 #    script:
 #    - cd ${root}/vue-bootstrap-css
-#    - yarn -i
-#    - yarn predeploy
-
+#    - npm i
+#    - npm run predeploy
   - stage: test
     node_js: lts/*
     name: refs-work-natively-with-DOM-elements
     script:
     - cd ${root}/refs-work-natively-with-DOM-elements
-    - yarn -i
-    - yarn predeploy
+    - npm i
+    - npm run predeploy
 
   - stage: test
     node_js: lts/*
     name: eventbus
     script:
     - cd ${root}/eventbus
-    - yarn -i
-    - yarn predeploy
+    - npm i
+    - npm run predeploy
 
   - stage: test
     node_js: lts/*
     name: some-vuetify-app
     script:
     - cd ${root}/some-vuetify-app
-    - yarn install;
-    - yarn predeploy;
+    - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
+    - npm i -f
+    - npm run predeploy;
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - yarn build --report
+    - npm run build -- --report
 
   - stage: test
     node_js: lts/*
     name: vuetify
     script:
     - cd ${root}/vuetify
-    - yarn install;
-    - yarn predeploy;
+    - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
+    - npm i -f
+    - npm run predeploy;
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - yarn build --report
+    - npm run build -- --report
 
   - stage: test
     node_js: lts/*
     name: vuetifyjs-setup
     script:
     - cd ${root}/vuetifyjs-setup
-    - yarn install;
-    - yarn predeploy;
+    - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
+    - npm i -f
+    - npm run predeploy;
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - yarn build --report
+    - npm run build -- --report
 
   - stage: test
     node_js: lts/*
     name: firebase-using-vuefire
     script:
     - cd ${root}/firebase-using-vuefire
-    - yarn install;
-    - yarn predeploy;
+    - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
+    - npm i -f
+    - npm run predeploy;
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - yarn build --report
+    - npm run build -- --report
 
   - stage: test
     node_js: lts/*
     name: responsive-web-design
     script:
     - cd ${root}/responsive-web-design
-    - yarn install;
-    - yarn predeploy;
+    - npm i
+    - npm run predeploy
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - yarn build --report
+    - npm run build -- --report
 
   - stage: test
     node_js: lts/*
     name: nuxt-server-side-rendering
     script:
     - cd ${root}/nuxt-server-side-rendering
-    - yarn install;
-    - yarn predeploy;
+    - npm i
+    - npm run predeploy;
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - yarn build --report
+    - npm run build -- --report
 
   - stage: test
     node_js: lts/*
     name: vuex-map-getters-and-map-actions
     script:
     - cd ${root}/vuex-map-getters-and-map-actions
-    - yarn install;
-    - yarn predeploy;
+    - npm run install
+    - npm run predeploy
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - yarn build --report
+    - npm run build -- --report
 
   - stage: test
     node_js: lts/*
     name: vue-material
     script:
     - cd ${root}/vue-material
-    - yarn install;
-    - yarn predeploy;
+    - npm i
+    - npm run predeploy
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - yarn build --report
+    - npm run build -- --report
 
   - stage: test
     node_js: lts/*
     name: materialize-css
     script:
     - cd ${root}/materialize-css
-    - yarn install;
-    - yarn predeploy;
+    - npm i
+    - npm run predeploy
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - yarn build --report
+    - npm run build -- --report
 
   - stage: test
     node_js: lts/*
     name: vuex-contact-list
     script:
     - cd ${root}/vuex-contact-list
-    - yarn install;
-    - yarn predeploy;
+    - npm i
+    - npm run predeploy
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - yarn build --report
+    - npm run build -- --report
 
   - stage: test
     node_js: lts/*
     name: vuex-counter-todo
     script:
     - cd ${root}/vuex-counter-todo
-    - yarn install;
-    - yarn predeploy;
+    - npm install
+    - npm run predeploy
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - yarn build --report
+    - npm run build -- --report
 
   - stage: test
     node_js: lts/*
     name: hello-vuex
     script:
     - cd ${root}/hello-vuex
-    - yarn install;
-    - yarn predeploy;
+    - npm i
+    - npm run predeploy
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - yarn build --report
+    - npm run build -- --report
 
   - stage: test
     node_js: lts/*
     name: todo-list
     script:
     - cd ${root}/todo-list
-    - yarn install;
-    - yarn predeploy;
+    - npm install
+    - npm run predeploy
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - yarn build --report
+    - npm run build -- --report
 
   - stage: test
     node_js: lts/*
     name: hello-world
     script:
     - cd ${root}/hello-world
-    - yarn install;
-    - yarn predeploy;
+    - npm install
+    - npm run predeploy
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - yarn build --report
+    - npm run build -- --report
 
   - stage: test
     node_js: lts/*
     name: template
     script:
     - cd ${root}/template
-    - yarn install;
-    - yarn predeploy;
+    - npm install
+    - npm run predeploy
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - yarn build --report
+    - npm run build -- --report
 
   - stage: test
     node_js: lts/*
@@ -220,10 +211,11 @@ jobs:
     script:
     - cd ${root}/vuetifyjs-setup
     - cp firebase.js.default firebase.js || true
-    - yarn install;
-    - yarn predeploy;
+    - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
+    - npm i -f
+    - npm run predeploy
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - yarn build --report
+    - npm run build -- --report
 
   - stage: test
     node_js: lts/*
@@ -231,10 +223,11 @@ jobs:
     script:
     - cd ${root}/firebase-using-vuefire
     - cp firebase.js.default firebase.js || true
-    - yarn install;
-    - yarn predeploy;
+    - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
+    - npm i -f
+    - npm run predeploy
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - yarn build --report
+    - npm run build -- --report
 
   - stage: test
     node_js: lts/*
@@ -242,10 +235,11 @@ jobs:
     script:
     - cd ${root}/some-vuetify-app
     - cp firebase.config.js.default firebase.config.js || true
-    - yarn install;
-    - yarn predeploy;
+    - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
+    - npm i -f
+    - npm run predeploy
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - yarn build --report
+    - npm run build -- --report
 
   - stage: test
     node_js: lts/*
@@ -253,10 +247,11 @@ jobs:
     script:
     - cd ${root}/vuetify
     - cp firebase.config.js.default firebase.config.js || true
-    - yarn install;
-    - yarn predeploy;
+    - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
+    - npm i -f
+    - npm run predeploy
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - yarn build --report
+    - npm run build -- --report
 
   - stage: deploy
     jdk: openjdk11
@@ -285,8 +280,7 @@ jobs:
 
 cache:
   npm: true
-  yarn: true
   packages: true
   directories:
   - node_modules/
-  - $HOME/.npm
+  - ~/.n*

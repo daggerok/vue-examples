@@ -5,6 +5,9 @@ dist/
 
 # Editor directories and files
 .idea
+*.iml
+*.ipr
+*.iws
 *.suo
 *.ntvs*
 *.njsproj
