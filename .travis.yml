@@ -73,35 +73,35 @@ jobs:
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
     - npm run build -- --report
 
-  - stage: test
-    node_js: lts/*
-    name: vuex-map-getters-and-map-actions
-    script:
-    - cd ${root}/vuex-map-getters-and-map-actions
-    - npm i
-    - npm run predeploy
-    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - npm run build -- --report
-
-  - stage: test
-    node_js: lts/*
-    name: vue-material
-    script:
-    - cd ${root}/vue-material
-    - npm i
-    - npm run predeploy
-    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - npm run build -- --report
-
-  - stage: test
-    node_js: lts/*
-    name: materialize-css
-    script:
-    - cd ${root}/materialize-css
-    - npm i
-    - npm run predeploy
-    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - npm run build -- --report
+#  - stage: test
+#    node_js: lts/*
+#    name: vuex-map-getters-and-map-actions
+#    script:
+#    - cd ${root}/vuex-map-getters-and-map-actions
+#    - npm i
+#    - npm run predeploy
+#    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+#    - npm run build -- --report
+#
+#  - stage: test
+#    node_js: lts/*
+#    name: vue-material
+#    script:
+#    - cd ${root}/vue-material
+#    - npm i
+#    - npm run predeploy
+#    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+#    - npm run build -- --report
+#
+#  - stage: test
+#    node_js: lts/*
+#    name: materialize-css
+#    script:
+#    - cd ${root}/materialize-css
+#    - npm i
+#    - npm run predeploy
+#    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+#    - npm run build -- --report
 
   - stage: test
     node_js: lts/*
@@ -163,93 +163,93 @@ jobs:
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
     - npm run build -- --report
 
+##  - stage: test
+##    node_js: lts/*
+##    name: vuetifyjs-setup
+##    script:
+##      - cd ${root}/vuetifyjs-setup
+##      - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
+##      - npm i -f
+##      - npm run predeploy;
+##      - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+##      - npm run build -- --report
 #  - stage: test
 #    node_js: lts/*
 #    name: vuetifyjs-setup
 #    script:
-#      - cd ${root}/vuetifyjs-setup
-#      - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
-#      - npm i -f
-#      - npm run predeploy;
-#      - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-#      - npm run build -- --report
-  - stage: test
-    node_js: lts/*
-    name: vuetifyjs-setup
-    script:
-    - cd ${root}/vuetifyjs-setup
-    - cp firebase.js.default firebase.js || true
-    - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
-    - npm i -f
-    - npm run predeploy
-    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - npm run build -- --report
-
+#    - cd ${root}/vuetifyjs-setup
+#    - cp firebase.js.default firebase.js || true
+#    - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
+#    - npm i -f
+#    - npm run predeploy
+#    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+#    - npm run build -- --report
+#
+##  - stage: test
+##    node_js: lts/*
+##    name: firebase-using-vuefire
+##    script:
+##      - cd ${root}/firebase-using-vuefire
+##      - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
+##      - npm i -f
+##      - npm run predeploy;
+##      - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+##      - npm run build -- --report
 #  - stage: test
 #    node_js: lts/*
 #    name: firebase-using-vuefire
 #    script:
-#      - cd ${root}/firebase-using-vuefire
-#      - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
-#      - npm i -f
-#      - npm run predeploy;
-#      - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-#      - npm run build -- --report
-  - stage: test
-    node_js: lts/*
-    name: firebase-using-vuefire
-    script:
-    - cd ${root}/firebase-using-vuefire
-    - cp firebase.js.default firebase.js || true
-    - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
-    - npm i -f
-    - npm run predeploy
-    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - npm run build -- --report
-
+#    - cd ${root}/firebase-using-vuefire
+#    - cp firebase.js.default firebase.js || true
+#    - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
+#    - npm i -f
+#    - npm run predeploy
+#    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+#    - npm run build -- --report
+#
+##  - stage: test
+##    node_js: lts/*
+##    name: some-vuetify-app
+##    script:
+##      - cd ${root}/some-vuetify-app
+##      - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
+##      - npm i -f
+##      - npm run predeploy;
+##      - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+##      - npm run build -- --report
 #  - stage: test
 #    node_js: lts/*
 #    name: some-vuetify-app
 #    script:
-#      - cd ${root}/some-vuetify-app
-#      - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
-#      - npm i -f
-#      - npm run predeploy;
-#      - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-#      - npm run build -- --report
-  - stage: test
-    node_js: lts/*
-    name: some-vuetify-app
-    script:
-    - cd ${root}/some-vuetify-app
-    - cp firebase.config.js.default firebase.config.js || true
-    - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
-    - npm i -f
-    - npm run predeploy
-    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - npm run build -- --report
-
+#    - cd ${root}/some-vuetify-app
+#    - cp firebase.config.js.default firebase.config.js || true
+#    - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
+#    - npm i -f
+#    - npm run predeploy
+#    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+#    - npm run build -- --report
+#
+##  - stage: test
+##    node_js: lts/*
+##    name: vuetify
+##    script:
+##      - cd ${root}/vuetify
+##      - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
+##      - npm i -f
+##      - npm run predeploy;
+##      - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+##      - npm run build -- --report
 #  - stage: test
 #    node_js: lts/*
 #    name: vuetify
 #    script:
-#      - cd ${root}/vuetify
-#      - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
-#      - npm i -f
-#      - npm run predeploy;
-#      - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-#      - npm run build -- --report
-  - stage: test
-    node_js: lts/*
-    name: vuetify
-    script:
-    - cd ${root}/vuetify
-    - cp firebase.config.js.default firebase.config.js || true
-    - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
-    - npm i -f
-    - npm run predeploy
-    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - npm run build -- --report
+#    - cd ${root}/vuetify
+#    - cp firebase.config.js.default firebase.config.js || true
+#    - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
+#    - npm i -f
+#    - npm run predeploy
+#    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+#    - npm run build -- --report
 
   - stage: deploy
     jdk: openjdk11
