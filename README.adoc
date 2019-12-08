@@ -1,6 +1,6 @@
 = vue-examples image:https://travis-ci.org/daggerok/vue-examples.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/vue-examples"]
 
-This repository is contains some Vue.js playground project examples:
+This repository is contains some Vue.js playground project examples
 
 - link:./vue-bootstrap-css/[Bootstrap | Tachyons | Vue]
 - link:hello-world/[Hello Vue.js]
@@ -20,7 +20,7 @@ This repository is contains some Vue.js playground project examples:
 - link:eventbus/[eventus]
 - link:refs-work-natively-with-DOM-elements/[working with DOM elements natively]
 
-Other repos:
+== other repos
 
 - link:https://github.com/daggerok/typescript-ionic-nuxt-app[GitHub daggerok/typescript-ionic-nuxt-app]
 - link:https://github.com/daggerok/vue-ionic-example[GitHub daggerok/vue-ionic-example]
@@ -28,6 +28,6 @@ Other repos:
 - link:https://github.com/daggerok/ionic-nuxt-app[GitHub daggerok/ionic-nuxt-app]
 - link:https://github.com/daggerok/cross-platform-desktop-electron-vue-app[Cross-platform desktop electron-vue Todo app]
 
-links:
+== links
 
 - link:https://metanit.com/[rubooks]
