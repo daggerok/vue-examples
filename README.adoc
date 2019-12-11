@@ -24,7 +24,7 @@ This repository is contains some Vue.js playground project examples
 
 - link:https://github.com/daggerok/webflux-kotlin-ionic-nuxt-mono-app[GitHub: daggerok/webflux-kotlin-ionic-nuxt-mono-app]
 - link:https://github.com/daggerok/typescript-ionic-nuxt-app[GitHub daggerok/typescript-ionic-nuxt-app]
-- link:https://github.com/daggerok/spring-boot-nuxt-spa[GitHub: daggerok/spring-boot-nuxt-spa]
+- link:https://github.com/daggerok/spring-boot-nuxt-spa[GitHub daggerok/spring-boot-nuxt-spa]
 - link:https://github.com/daggerok/vue-ionic-example[GitHub daggerok/vue-ionic-example]
 - link:https://github.com/daggerok/nuxt-examples[GitHub daggerok/nuxt-examples]
 - link:https://github.com/daggerok/ionic-nuxt-app[GitHub daggerok/ionic-nuxt-app]
