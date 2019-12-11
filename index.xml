@@ -9,7 +9,7 @@
 </imageobject>
 <textobject><phrase>Build Status</phrase></textobject>
 </inlinemediaobject></title>
-<date>2019-12-11 15:40:19 UTC</date>
+<date>2019-12-11 16:20:00 UTC</date>
 <author>
 <personname>
 <firstname>Maksim</firstname>
@@ -21,7 +21,7 @@
 <revhistory>
 <revision>
 <revnumber>0.0.1</revnumber>
-<date>2019-12-11 15:40:19 UTC</date>
+<date>2019-12-11 16:20:00 UTC</date>
 <authorinitials>MK</authorinitials>
 </revision>
 </revhistory>
@@ -111,6 +111,9 @@
 </listitem>
 <listitem>
 <simpara><link xl:href="https://github.com/daggerok/typescript-ionic-nuxt-app">GitHub daggerok/typescript-ionic-nuxt-app</link></simpara>
+</listitem>
+<listitem>
+<simpara><link xl:href="https://github.com/daggerok/spring-boot-nuxt-spa">GitHub daggerok/spring-boot-nuxt-spa</link></simpara>
 </listitem>
 <listitem>
 <simpara><link xl:href="https://github.com/daggerok/vue-ionic-example">GitHub daggerok/vue-ionic-example</link></simpara>
