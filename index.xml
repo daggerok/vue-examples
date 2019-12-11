@@ -9,7 +9,7 @@
 </imageobject>
 <textobject><phrase>Build Status</phrase></textobject>
 </inlinemediaobject></title>
-<date>2019-12-08 23:56:28 UTC</date>
+<date>2019-12-11 15:40:19 UTC</date>
 <author>
 <personname>
 <firstname>Maksim</firstname>
@@ -21,7 +21,7 @@
 <revhistory>
 <revision>
 <revnumber>0.0.1</revnumber>
-<date>2019-12-08 23:56:28 UTC</date>
+<date>2019-12-11 15:40:19 UTC</date>
 <authorinitials>MK</authorinitials>
 </revision>
 </revhistory>
@@ -106,6 +106,9 @@
 <chapter xml:id="other-repos">
 <title>other repos</title>
 <itemizedlist>
+<listitem>
+<simpara><link xl:href="https://github.com/daggerok/webflux-kotlin-ionic-nuxt-mono-app">GitHub: daggerok/webflux-kotlin-ionic-nuxt-mono-app</link></simpara>
+</listitem>
 <listitem>
 <simpara><link xl:href="https://github.com/daggerok/typescript-ionic-nuxt-app">GitHub daggerok/typescript-ionic-nuxt-app</link></simpara>
 </listitem>
