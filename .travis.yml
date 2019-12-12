@@ -18,7 +18,6 @@ addons:
       - curl
       - sudo
       - lsof
-      - docker-ce
       - python3-pip
       - fonts-liberation
       - libappindicator1
