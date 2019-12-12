@@ -51,7 +51,7 @@ jobs:
       - cd ${root}/ecma-script-parcel
       - npm i
       - npm run start &
-      - sleep 0.5s
+      - sleep 1s
       - npm run logs &
       - wait_for 1234
     script:
