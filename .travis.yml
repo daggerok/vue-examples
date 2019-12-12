@@ -2,30 +2,46 @@ env:
   global:
   - TERM=dumb
   - secure: oP/muOICK9B+4eYo8V8AQJqJ0iqy2n9s2n+5XUJPDJh04PZdG/jRp5mpoHATdSqrCEoREuvP1HAww8mNCiZRjN1pMbKE6v6LvtuRYURpm3Uctnbgf6m3pA95upcf48TsHLPr30seQge0lwR39dx+PQ0bbsfywR81MzPu+gT2ExbxMg70MOOf2tILIGAPKkk/Zishf7an17VzgFDJZLLq8fZaKFbFE5jgA5OMU7lgSUrQadhXTgRWT6kUmt7pPByovLinzBZVl/wBbyoxcxF3HSNaLcUSgWXDTDfQHeRDblS78ERtQ+ywBEN9dPv9cwTrxgZcr5laAQjIJ22HNGyLT2gxodlxRs3awp7zY2aNsdcrnbNNSTh2gfZ2r3yd/CDkuNU46W5QsfLpvEgJlacle4JM91afCoYj2OFFSx09UHfp9kPbRwuXerhgIWuYGUwQ15dXR0csxxqLJYslDK8XucKGrPIxo8gi4+/cKeKLotR7b5VXEjdrZtRfnbWU4htYMcb+1nGItKmYyK2eFb4ShOhS2lXRhEGwzAOhn8C5MGKdABpaPLcBHcAyUpGFl76B4nRU4kXKyKPKBJoBs36eZMBYgsiKwZ8UD9id0WIHLAQInbXzvh4SbmClJV4SFwcIroKkGv+iQdRvFA21d0v1teYTHAeHot4bKVGVEaODP/M=
-language: node_js
-node_js: lts/*
 notifications:
   email: false
 git:
   quiet: true
   depth: false
+language: node
+node_js: lts/*
+python: 3.7
+os: linux
 addons:
   apt:
     update: true
     packages:
-    - bash
-    - curl
-    - fonts-liberation
-    - libappindicator1
-    - google-chrome-stable
+      - curl
+      - sudo
+      - lsof
+      - docker-ce
+      - python3-pip
+      - fonts-liberation
+      - libappindicator1
+      - google-chrome-stable
 install: true
-services: xvfb
 before_install:
-- export CHROME_BIN=/usr/bin/google-chrome
-- export DISPLAY=:99.0
-#
-- export root=$(pwd)
-- npm i -f -g -ED node-gyp
+  - export DISPLAY=:99.0
+  - |
+    if [ ! -f ${HOME}/.local/daggerok/bash-functions/master/main.bash ] ; then
+      mkdir -p ${HOME}/.local/daggerok/bash-functions/master ;
+      curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash > ${HOME}/.local/daggerok/bash-functions/master/main.bash ;
+    fi
+    source ${HOME}/.local/daggerok/bash-functions/master/main.bash ;
+  - stop_any 80 3000 5000 8080 5432
+  - export PATH=$HOME/.local/bin:$PATH
+  - pip3 install --user --upgrade pip setuptools
+  - pip install --user --upgrade httpie
+  #
+  - export CHROME_BIN=/usr/bin/google-chrome
+  - export DISPLAY=:99.0
+  #
+  - export root=$(pwd)
+  - npm i -f -g -ED node-gyp
 jobs:
   include:
 
@@ -47,9 +63,9 @@ jobs:
 #    node_js: lts/*
 #    name: vue-bootstrap-css
 #    script:
-#    - cd ${root}/vue-bootstrap-css
-#    - npm i
-#    - npm run predeploy
+#      - cd ${root}/vue-bootstrap-css
+#      - npm i
+#      - npm run predeploy
 
   - stage: test
     node_js: lts/*
@@ -294,5 +310,6 @@ cache:
   npm: true
   packages: true
   directories:
+  - ~/.local/daggerok
   - node_modules/
   - ~/.n*
