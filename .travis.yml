@@ -46,7 +46,20 @@ jobs:
   include:
 
   - stage: test
-    node_js: lts/*
+    name: ecma-script-parcel
+    before_script:
+      - cd ${root}/ecma-script-parcel
+      - npm i
+      - npm run start &
+      - sleep 0.5s
+      - npm run logs &
+      - wait_for 1234
+    script:
+      - http :1234
+    after_script:
+      - npm run stop
+
+  - stage: test
     name: ecma-script-5
     before_script:
       - cd ${root}/ecma-script-5
@@ -68,7 +81,6 @@ jobs:
 #      - npm run predeploy
 
   - stage: test
-    node_js: lts/*
     name: refs-work-natively-with-DOM-elements
     script:
     - cd ${root}/refs-work-natively-with-DOM-elements
@@ -76,7 +88,6 @@ jobs:
     - npm run predeploy
 
   - stage: test
-    node_js: lts/*
     name: eventbus
     script:
     - cd ${root}/eventbus
@@ -84,7 +95,6 @@ jobs:
     - npm run predeploy
 
   - stage: test
-    node_js: lts/*
     name: responsive-web-design
     script:
     - cd ${root}/responsive-web-design
@@ -94,7 +104,6 @@ jobs:
     - npm run build -- --report
 
   - stage: test
-    node_js: lts/*
     name: nuxt-server-side-rendering
     script:
     - cd ${root}/nuxt-server-side-rendering
