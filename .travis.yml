@@ -29,6 +29,20 @@ before_install:
 jobs:
   include:
 
+  - stage: test
+    node_js: lts/*
+    name: ecma-script-5
+    before_script:
+      - cd ${root}/ecma-script-5
+      - npm i
+      - npm run start
+      - npm run logs &
+      - wait_for 3000 3001
+    script:
+      - http :3000
+    after_script:
+      - npm run stop
+
 #  - stage: test
 #    node_js: lts/*
 #    name: vue-bootstrap-css

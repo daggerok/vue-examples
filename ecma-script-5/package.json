@@ -1,0 +1,19 @@
+{
+  "name": "ecma-script-5",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "forever start ./node_modules/.bin/browser-sync start --watch --no-open --directory --files *.* --cors --serveStatic src --server src",
+    "logs": "forever logs -f 0",
+    "stop": "forever stopall --killTree"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/vue": "2.0.0",
+    "browser-sync": "2.26.7",
+    "forever": "1.0.0"
+  }
+}
