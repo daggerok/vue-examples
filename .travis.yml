@@ -45,6 +45,18 @@ jobs:
   include:
 
   - stage: test
+    name: typescript-vue-app
+    before_script:
+      - cd ${root}/typescript-vue-app && npm i
+      - cd ${root}/typescript-vue-app && npm run start
+      - cd ${root}/typescript-vue-app && npm run logs &
+      - wait_for 8080
+    script:
+      - http :8080
+    after_script:
+      - npm run stop
+
+  - stage: test
     name: ecma-script-parcel
     before_script:
       - cd ${root}/ecma-script-parcel

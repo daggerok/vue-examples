@@ -2,6 +2,7 @@
 
 This repository is contains some Vue.js playground project examples
 
+- link:./typescript-vue-app/[TypeScript + Vue + Bulma]
 - link:./ecma-script-5/[Vue in browser | EcmaScript 5.1, BrowserSync, Bulma]
 - link:./vue-bootstrap-css/[Bootstrap | Tachyons | Vue]
 - link:hello-world/[Hello Vue.js]
