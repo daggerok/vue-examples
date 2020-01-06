@@ -9,7 +9,7 @@
 </imageobject>
 <textobject><phrase>Build Status</phrase></textobject>
 </inlinemediaobject></title>
-<date>2019-12-20 11:24:32 UTC</date>
+<date>2020-01-06 03:46:18 UTC</date>
 <author>
 <personname>
 <firstname>Maksim</firstname>
@@ -21,7 +21,7 @@
 <revhistory>
 <revision>
 <revnumber>0.0.1</revnumber>
-<date>2019-12-20 11:24:32 UTC</date>
+<date>2020-01-06 03:46:18 UTC</date>
 <authorinitials>MK</authorinitials>
 </revision>
 </revhistory>
@@ -113,12 +113,13 @@
 <title>other repos</title>
 <itemizedlist>
 <listitem>
+<simpara><link xl:href="https://github.com/daggerok/saber-examples">github.com/daggerok/saber-examples</link></simpara>
+</listitem>
+<listitem>
 <simpara><link xl:href="https://github.com/daggerok/typescript-ionic-nuxt-app">GitHub daggerok/typescript-ionic-nuxt-app</link></simpara>
-<itemizedlist>
+</listitem>
 <listitem>
 <simpara><link xl:href="https://github.com/daggerok/webflux-kotlin-nuxt-app">GitHub: daggerok/webflux-kotlin-nuxt-app</link></simpara>
-</listitem>
-</itemizedlist>
 </listitem>
 <listitem>
 <simpara><link xl:href="https://github.com/daggerok/spring-boot-nuxt-spa">GitHub daggerok/spring-boot-nuxt-spa</link></simpara>
