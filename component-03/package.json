@@ -1,0 +1,38 @@
+{
+  "name": "vue-examples",
+  "version": "1.0.0",
+  "description": "Starter",
+  "main": "src/index.html",
+  "scripts": {
+    "gh": "npm run build -- --public-url='/vue-examples/'",
+    "build": "parcel build src/index.html --no-cache",
+    "start": "pm2 start 'npm run dev' --name app",
+    "dev": "parcel src/index.html --open --no-cache",
+    "restart": "pm2 restart app",
+    "stop": "pm2 kill",
+    "logs": "pm2 logs"
+  },
+  "keywords": [
+    "pm2",
+    "parcel",
+    "starter"
+  ],
+  "author": "daggerok",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "13.1.4",
+    "@types/vue": "2.0.0",
+    "@vue/component-compiler-utils": "3.1.1",
+    "parcel-bundler": "1.12.4",
+    "pm2": "4.2.1",
+    "pug": "^2.0.4",
+    "sass": "^1.24.3",
+    "typescript": "3.7.4",
+    "vue-template-compiler": "2.6.11",
+    "webfontloader": "1.6.28"
+  },
+  "dependencies": {
+    "vue": "2.6.11",
+    "vue-hot-reload-api": "2.3.4"
+  }
+}

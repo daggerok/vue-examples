@@ -35,6 +35,9 @@ This repository is contains some Vue.js playground project examples
 
 == links
 
+- link:https://github.com/vuejs/vue-cli/issues/1198#issuecomment-385340314[Vue + TS cannot resolve module TS2307 error fix]
+- https://parceljs.org/vue.html
+- https://parceljs.org/recipes.html#vue
 - link:https://vue-composition-api-rfc.netlify.com/#summary[Vue Composition API]
 - link:https://ru.vuejs.org/v2/guide/syntax.html[Vue in browser]
 - link:https://metanit.com/[rubooks]
