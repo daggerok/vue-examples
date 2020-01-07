@@ -35,4 +35,6 @@ This repository is contains some Vue.js playground project examples
 
 == links
 
+- link:https://vue-composition-api-rfc.netlify.com/#summary[Vue Composition API]
+- link:https://ru.vuejs.org/v2/guide/syntax.html[Vue in browser]
 - link:https://metanit.com/[rubooks]

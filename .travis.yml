@@ -1,7 +1,6 @@
 env:
   global:
   - TERM=dumb
-  - secure: oP/muOICK9B+4eYo8V8AQJqJ0iqy2n9s2n+5XUJPDJh04PZdG/jRp5mpoHATdSqrCEoREuvP1HAww8mNCiZRjN1pMbKE6v6LvtuRYURpm3Uctnbgf6m3pA95upcf48TsHLPr30seQge0lwR39dx+PQ0bbsfywR81MzPu+gT2ExbxMg70MOOf2tILIGAPKkk/Zishf7an17VzgFDJZLLq8fZaKFbFE5jgA5OMU7lgSUrQadhXTgRWT6kUmt7pPByovLinzBZVl/wBbyoxcxF3HSNaLcUSgWXDTDfQHeRDblS78ERtQ+ywBEN9dPv9cwTrxgZcr5laAQjIJ22HNGyLT2gxodlxRs3awp7zY2aNsdcrnbNNSTh2gfZ2r3yd/CDkuNU46W5QsfLpvEgJlacle4JM91afCoYj2OFFSx09UHfp9kPbRwuXerhgIWuYGUwQ15dXR0csxxqLJYslDK8XucKGrPIxo8gi4+/cKeKLotR7b5VXEjdrZtRfnbWU4htYMcb+1nGItKmYyK2eFb4ShOhS2lXRhEGwzAOhn8C5MGKdABpaPLcBHcAyUpGFl76B4nRU4kXKyKPKBJoBs36eZMBYgsiKwZ8UD9id0WIHLAQInbXzvh4SbmClJV4SFwcIroKkGv+iQdRvFA21d0v1teYTHAeHot4bKVGVEaODP/M=
 notifications:
   email: false
 git:
@@ -15,33 +14,46 @@ addons:
   apt:
     packages:
       - curl
-      - sudo
-      - lsof
+      #- sudo
+      #- lsof
       - python3-pip
-      - fonts-liberation
-      - libappindicator1
-      - google-chrome-stable
+      #- fonts-liberation
+      #- libappindicator1
+      #- google-chrome-stable
 install: true
 before_install:
-  - export DISPLAY=:99.0
+  #- export DISPLAY=:99.0
+  #- export CHROME_BIN=/usr/bin/google-chrome
   - |
     if [ ! -f ${HOME}/.local/daggerok/bash-functions/master/main.bash ] ; then
       mkdir -p ${HOME}/.local/daggerok/bash-functions/master ;
       curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash > ${HOME}/.local/daggerok/bash-functions/master/main.bash ;
     fi
     source ${HOME}/.local/daggerok/bash-functions/master/main.bash ;
-  - stop_any 80 3000 5000 8080 5432
-  - export PATH=$HOME/.local/bin:$PATH
-  - pip3 install --user --upgrade pip setuptools
-  - pip install --user --upgrade httpie
-  #
-  - export CHROME_BIN=/usr/bin/google-chrome
-  - export DISPLAY=:99.0
+    stop_any 80 3000 5000 8080 5432
+  - |
+    export PATH=$HOME/.local/bin:$PATH
+    pip3 install --user --upgrade pip setuptools
+    pip install --user --upgrade httpie
   #
   - export root=$(pwd)
-  - npm i -f -g -ED node-gyp
+  #- npm i -f -g -ED node-gyp
 jobs:
   include:
+
+  - stage: test
+    name: component-02-in-browser-in-html
+    env:
+      - SUB_PROJECT=component-02-in-browser-in-html
+    before_script:
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm i -E
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm start
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm run logs &
+      - wait_for 1234
+    script:
+      - http :1234
+    after_script:
+      - cd ${root}/vuesax-example && npm stop
 
   - stage: test
     name: component-01-in-browser
@@ -217,15 +229,15 @@ jobs:
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
     - npm run build -- --report
 
-  - stage: test
-    node_js: lts/*
-    name: hello-world
-    script:
-    - cd ${root}/hello-world
-    - npm install
-    - npm run predeploy
-    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - npm run build -- --report
+#  - stage: test
+#    node_js: lts/*
+#    name: hello-world
+#    script:
+#    - cd ${root}/hello-world
+#    - npm install
+#    - npm run predeploy
+#    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+#    - npm run build -- --report
 
 #  - stage: test
 #    node_js: lts/*
@@ -326,12 +338,11 @@ jobs:
 #    - npm run build -- --report
 
   - stage: deploy
-    jdk: openjdk11
     env:
-      - SUB_PROJECT=component-01-in-browser
-    name: GitHub release and GitHub pages deployment (openjdk11)
+      - SUB_PROJECT=component-02-in-browser-in-html
+      - secure: oP/muOICK9B+4eYo8V8AQJqJ0iqy2n9s2n+5XUJPDJh04PZdG/jRp5mpoHATdSqrCEoREuvP1HAww8mNCiZRjN1pMbKE6v6LvtuRYURpm3Uctnbgf6m3pA95upcf48TsHLPr30seQge0lwR39dx+PQ0bbsfywR81MzPu+gT2ExbxMg70MOOf2tILIGAPKkk/Zishf7an17VzgFDJZLLq8fZaKFbFE5jgA5OMU7lgSUrQadhXTgRWT6kUmt7pPByovLinzBZVl/wBbyoxcxF3HSNaLcUSgWXDTDfQHeRDblS78ERtQ+ywBEN9dPv9cwTrxgZcr5laAQjIJ22HNGyLT2gxodlxRs3awp7zY2aNsdcrnbNNSTh2gfZ2r3yd/CDkuNU46W5QsfLpvEgJlacle4JM91afCoYj2OFFSx09UHfp9kPbRwuXerhgIWuYGUwQ15dXR0csxxqLJYslDK8XucKGrPIxo8gi4+/cKeKLotR7b5VXEjdrZtRfnbWU4htYMcb+1nGItKmYyK2eFb4ShOhS2lXRhEGwzAOhn8C5MGKdABpaPLcBHcAyUpGFl76B4nRU4kXKyKPKBJoBs36eZMBYgsiKwZ8UD9id0WIHLAQInbXzvh4SbmClJV4SFwcIroKkGv+iQdRvFA21d0v1teYTHAeHot4bKVGVEaODP/M=
+    name: GitHub pages deployment
     script: skip
-    if: branch = "master" AND type NOT IN (pull_request)
     before_deploy:
     - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm i
     - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm run gh
@@ -347,6 +358,8 @@ jobs:
 
 #  - stage: deploy
 #    jdk: openjdk11
+#    env:
+#      - secure: oP/muOICK9B+4eYo8V8AQJqJ0iqy2n9s2n+5XUJPDJh04PZdG/jRp5mpoHATdSqrCEoREuvP1HAww8mNCiZRjN1pMbKE6v6LvtuRYURpm3Uctnbgf6m3pA95upcf48TsHLPr30seQge0lwR39dx+PQ0bbsfywR81MzPu+gT2ExbxMg70MOOf2tILIGAPKkk/Zishf7an17VzgFDJZLLq8fZaKFbFE5jgA5OMU7lgSUrQadhXTgRWT6kUmt7pPByovLinzBZVl/wBbyoxcxF3HSNaLcUSgWXDTDfQHeRDblS78ERtQ+ywBEN9dPv9cwTrxgZcr5laAQjIJ22HNGyLT2gxodlxRs3awp7zY2aNsdcrnbNNSTh2gfZ2r3yd/CDkuNU46W5QsfLpvEgJlacle4JM91afCoYj2OFFSx09UHfp9kPbRwuXerhgIWuYGUwQ15dXR0csxxqLJYslDK8XucKGrPIxo8gi4+/cKeKLotR7b5VXEjdrZtRfnbWU4htYMcb+1nGItKmYyK2eFb4ShOhS2lXRhEGwzAOhn8C5MGKdABpaPLcBHcAyUpGFl76B4nRU4kXKyKPKBJoBs36eZMBYgsiKwZ8UD9id0WIHLAQInbXzvh4SbmClJV4SFwcIroKkGv+iQdRvFA21d0v1teYTHAeHot4bKVGVEaODP/M=
 #    name: GitHub release and GitHub pages deployment (openjdk11)
 #    script: skip
 #    if: branch = "master" AND type NOT IN (pull_request)
