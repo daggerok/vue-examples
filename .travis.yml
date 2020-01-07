@@ -44,6 +44,20 @@ jobs:
   include:
 
   - stage: test
+    name: component-01-in-browser
+    env:
+      - SUB_PROJECT=component-01-in-browser
+    before_script:
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm i -E
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm start
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm run logs &
+      - wait_for 1234
+    script:
+      - http :1234
+    after_script:
+      - cd ${root}/vuesax-example && npm stop
+
+  - stage: test
     name: vuesax-example
     before_script:
       - cd ${root}/vuesax-example && npm i
@@ -213,15 +227,15 @@ jobs:
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
     - npm run build -- --report
 
-  - stage: test
-    node_js: lts/*
-    name: template
-    script:
-    - cd ${root}/template
-    - npm install
-    - npm run predeploy
-    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - npm run build -- --report
+#  - stage: test
+#    node_js: lts/*
+#    name: template
+#    script:
+#    - cd ${root}/template
+#    - npm install
+#    - npm run predeploy
+#    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+#    - npm run build -- --report
 
 ##  - stage: test
 ##    node_js: lts/*
@@ -313,29 +327,45 @@ jobs:
 
   - stage: deploy
     jdk: openjdk11
+    env:
+      - SUB_PROJECT=component-01-in-browser
     name: GitHub release and GitHub pages deployment (openjdk11)
     script: skip
     if: branch = "master" AND type NOT IN (pull_request)
     before_deploy:
-    - if [ "$TRAVIS_PULL_REQUEST" != "false" ] || [ ".$TRAVIS_BRANCH" != ".master" ] ; then exit 0 ; fi
-    - env
-    # publish tag release
-    - set -e
-    #- cd ${root}
-    - ./mvnw -Pdocs >/dev/null
-    - ls .
-    - ls target/generated-docs
+    - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm i
+    - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm run gh
     deploy:
       provider: pages
       skip-cleanup: true
-      # travis encrypt GITHUB_TOKEN=<your github repo token> --add
-      github-token: "$GITHUB_TOKEN"
       keep-history: true
+      target_branch: gh-pages
+      github-token: "$GITHUB_TOKEN"
+      local-dir: $TRAVIS_BUILD_DIR/$SUB_PROJECT/dist
       on:
         branch: master
-      local-dir: target/generated-docs
-      target_branch: gh-pages
 
+#  - stage: deploy
+#    jdk: openjdk11
+#    name: GitHub release and GitHub pages deployment (openjdk11)
+#    script: skip
+#    if: branch = "master" AND type NOT IN (pull_request)
+#    before_deploy:
+#    - if [ "$TRAVIS_PULL_REQUEST" != "false" ] || [ ".$TRAVIS_BRANCH" != ".master" ] ; then exit 0 ; fi
+#    - env
+#    - set -e
+#    - ./mvnw -Pdocs >/dev/null
+#    - ls .
+#    - ls target/generated-docs
+#    deploy:
+#      provider: pages
+#      skip-cleanup: true
+#      keep-history: true
+#      target_branch: gh-pages
+#      github-token: "$GITHUB_TOKEN"
+#      local-dir: target/generated-docs
+#      on:
+#        branch: master
 cache:
   npm: true
   packages: true
