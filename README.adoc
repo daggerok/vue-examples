@@ -24,6 +24,7 @@ This repository is contains some Vue.js playground project examples
 
 == other repos
 
+- https://github.com/daggerok/tsx-vue-composition-api-example
 - https://github.com/daggerok/saber-examples
 - link:https://github.com/daggerok/typescript-ionic-nuxt-app[GitHub daggerok/typescript-ionic-nuxt-app]
 - link:https://github.com/daggerok/webflux-kotlin-nuxt-app[GitHub: daggerok/webflux-kotlin-nuxt-app]
