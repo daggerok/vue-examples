@@ -35,11 +35,22 @@ before_install:
     export PATH=$HOME/.local/bin:$PATH
     pip3 install --user --upgrade pip setuptools
     pip install --user --upgrade httpie
-  #
-  - export root=$(pwd)
-  #- npm i -f -g -ED node-gyp
 jobs:
   include:
+
+  - stage: test
+    name: component-05-vue-composition-api
+    env:
+      - SUB_PROJECT=component-05-vue-composition-api
+    before_script:
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm i -E
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm start
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm run logs &
+      - wait_for 8080
+    script:
+      - http :8080
+    after_script:
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm stop
 
   - stage: test
     name: component-04-ts-vue-cli
@@ -49,11 +60,11 @@ jobs:
       - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm i -E
       - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm start
       - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm run logs &
-      - wait_for 1234
+      - wait_for 8080
     script:
-      - http :1234
+      - http :8080
     after_script:
-      - cd ${root}/vuesax-example && npm stop
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm stop
 
   - stage: test
     name: component-03
@@ -67,7 +78,7 @@ jobs:
     script:
       - http :1234
     after_script:
-      - cd ${root}/vuesax-example && npm stop
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm stop
 
   - stage: test
     name: component-02-in-browser-in-html
@@ -81,7 +92,7 @@ jobs:
     script:
       - http :1234
     after_script:
-      - cd ${root}/vuesax-example && npm stop
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm stop
 
   - stage: test
     name: component-01-in-browser
@@ -95,49 +106,51 @@ jobs:
     script:
       - http :1234
     after_script:
-      - cd ${root}/vuesax-example && npm stop
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm stop
 
   - stage: test
     name: vuesax-example
+    env:
+      - SUB_PROJECT=vuesax-example
     before_script:
-      - cd ${root}/vuesax-example && npm i
-      - cd ${root}/vuesax-example && npm start
-      - cd ${root}/vuesax-example && npm run logs &
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm i
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm start
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm run logs &
       - wait_for 8080
     script:
       - http :8080
     after_script:
-      - cd ${root}/vuesax-example && npm stop
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm stop
 
   - stage: test
     name: typescript-vue-app
     before_script:
-      - cd ${root}/typescript-vue-app && npm i
-      - cd ${root}/typescript-vue-app && npm start
-      - cd ${root}/typescript-vue-app && npm run logs &
+      - cd $TRAVIS_BUILD_DIR/typescript-vue-app && npm i
+      - cd $TRAVIS_BUILD_DIR/typescript-vue-app && npm start
+      - cd $TRAVIS_BUILD_DIR/typescript-vue-app && npm run logs &
       - wait_for 8080
     script:
       - http :8080
     after_script:
-      - cd ${root}/typescript-vue-app && npm stop
+      - cd $TRAVIS_BUILD_DIR/typescript-vue-app && npm stop
 
   - stage: test
     name: ecma-script-parcel
     before_script:
-      - cd ${root}/ecma-script-parcel && npm i
-      - cd ${root}/ecma-script-parcel && npm start &
+      - cd $TRAVIS_BUILD_DIR/ecma-script-parcel && npm i
+      - cd $TRAVIS_BUILD_DIR/ecma-script-parcel && npm start &
       - sleep 1s
       - npm run logs &
       - wait_for 1234
     script:
       - http :1234
     after_script:
-      - cd ${root}/ecma-script-parcel && npm stop
+      - cd $TRAVIS_BUILD_DIR/ecma-script-parcel && npm stop
 
   - stage: test
     name: ecma-script-5
     before_script:
-      - cd ${root}/ecma-script-5
+      - cd $TRAVIS_BUILD_DIR/ecma-script-5
       - npm i
       - npm run start
       - npm run logs &
@@ -147,32 +160,32 @@ jobs:
     after_script:
       - npm run stop
 
-#  - stage: test
-#    node_js: lts/*
-#    name: vue-bootstrap-css
-#    script:
-#      - cd ${root}/vue-bootstrap-css
-#      - npm i
-#      - npm run predeploy
+  - stage: test
+    node_js: lts/*
+    name: vue-bootstrap-css
+    script:
+      - cd $TRAVIS_BUILD_DIR/vue-bootstrap-css
+      - npm i
+      - npm run predeploy
 
   - stage: test
     name: refs-work-natively-with-DOM-elements
     script:
-    - cd ${root}/refs-work-natively-with-DOM-elements
+    - cd $TRAVIS_BUILD_DIR/refs-work-natively-with-DOM-elements
     - npm i
     - npm run predeploy
 
   - stage: test
     name: eventbus
     script:
-    - cd ${root}/eventbus
+    - cd $TRAVIS_BUILD_DIR/eventbus
     - npm i
     - npm run predeploy
 
   - stage: test
     name: responsive-web-design
     script:
-    - cd ${root}/responsive-web-design
+    - cd $TRAVIS_BUILD_DIR/responsive-web-design
     - npm i
     - npm run predeploy
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
@@ -181,7 +194,7 @@ jobs:
   - stage: test
     name: nuxt-server-side-rendering
     script:
-    - cd ${root}/nuxt-server-side-rendering
+    - cd $TRAVIS_BUILD_DIR/nuxt-server-side-rendering
     - npm i
     - npm run predeploy;
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
@@ -191,7 +204,7 @@ jobs:
 #    node_js: lts/*
 #    name: vuex-map-getters-and-map-actions
 #    script:
-#    - cd ${root}/vuex-map-getters-and-map-actions
+#    - cd $TRAVIS_BUILD_DIR/vuex-map-getters-and-map-actions
 #    - npm i
 #    - npm run predeploy
 #    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
@@ -201,7 +214,7 @@ jobs:
 #    node_js: lts/*
 #    name: vue-material
 #    script:
-#    - cd ${root}/vue-material
+#    - cd $TRAVIS_BUILD_DIR/vue-material
 #    - npm i
 #    - npm run predeploy
 #    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
@@ -211,7 +224,7 @@ jobs:
 #    node_js: lts/*
 #    name: materialize-css
 #    script:
-#    - cd ${root}/materialize-css
+#    - cd $TRAVIS_BUILD_DIR/materialize-css
 #    - npm i
 #    - npm run predeploy
 #    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
@@ -221,27 +234,27 @@ jobs:
 #    node_js: lts/*
 #    name: vuex-contact-list
 #    script:
-#    - cd ${root}/vuex-contact-list
+#    - cd $TRAVIS_BUILD_DIR/vuex-contact-list
 #    - npm i
 #    - npm run predeploy
 #    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
 #    - npm run build -- --report
 
-  - stage: test
-    node_js: lts/*
-    name: vuex-counter-todo
-    script:
-    - cd ${root}/vuex-counter-todo
-    - npm install
-    - npm run predeploy
-    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - npm run build -- --report
+#  - stage: test
+#    node_js: lts/*
+#    name: vuex-counter-todo
+#    script:
+#    - cd $TRAVIS_BUILD_DIR/vuex-counter-todo
+#    - npm install
+#    - npm run predeploy
+#    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+#    - npm run build -- --report
 
 #  - stage: test
 #    node_js: lts/*
 #    name: hello-vuex
 #    script:
-#    - cd ${root}/hello-vuex
+#    - cd $TRAVIS_BUILD_DIR/hello-vuex
 #    - npm i
 #    - npm run predeploy
 #    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
@@ -251,7 +264,7 @@ jobs:
 #    node_js: lts/*
 #    name: todo-list
 #    script:
-#    - cd ${root}/todo-list
+#    - cd $TRAVIS_BUILD_DIR/todo-list
 #    - npm install
 #    - npm run predeploy
 #    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
@@ -261,7 +274,7 @@ jobs:
 #    node_js: lts/*
 #    name: hello-world
 #    script:
-#    - cd ${root}/hello-world
+#    - cd $TRAVIS_BUILD_DIR/hello-world
 #    - npm install
 #    - npm run predeploy
 #    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
@@ -271,7 +284,7 @@ jobs:
 #    node_js: lts/*
 #    name: template
 #    script:
-#    - cd ${root}/template
+#    - cd $TRAVIS_BUILD_DIR/template
 #    - npm install
 #    - npm run predeploy
 #    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
@@ -281,7 +294,7 @@ jobs:
 ##    node_js: lts/*
 ##    name: vuetifyjs-setup
 ##    script:
-##      - cd ${root}/vuetifyjs-setup
+##      - cd $TRAVIS_BUILD_DIR/vuetifyjs-setup
 ##      - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
 ##      - npm i -f
 ##      - npm run predeploy;
@@ -291,7 +304,7 @@ jobs:
 #    node_js: lts/*
 #    name: vuetifyjs-setup
 #    script:
-#    - cd ${root}/vuetifyjs-setup
+#    - cd $TRAVIS_BUILD_DIR/vuetifyjs-setup
 #    - cp firebase.js.default firebase.js || true
 #    - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
 #    - npm i -f
@@ -303,7 +316,7 @@ jobs:
 ##    node_js: lts/*
 ##    name: firebase-using-vuefire
 ##    script:
-##      - cd ${root}/firebase-using-vuefire
+##      - cd $TRAVIS_BUILD_DIR/firebase-using-vuefire
 ##      - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
 ##      - npm i -f
 ##      - npm run predeploy;
@@ -313,7 +326,7 @@ jobs:
 #    node_js: lts/*
 #    name: firebase-using-vuefire
 #    script:
-#    - cd ${root}/firebase-using-vuefire
+#    - cd $TRAVIS_BUILD_DIR/firebase-using-vuefire
 #    - cp firebase.js.default firebase.js || true
 #    - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
 #    - npm i -f
@@ -325,7 +338,7 @@ jobs:
 ##    node_js: lts/*
 ##    name: some-vuetify-app
 ##    script:
-##      - cd ${root}/some-vuetify-app
+##      - cd $TRAVIS_BUILD_DIR/some-vuetify-app
 ##      - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
 ##      - npm i -f
 ##      - npm run predeploy;
@@ -335,7 +348,7 @@ jobs:
 #    node_js: lts/*
 #    name: some-vuetify-app
 #    script:
-#    - cd ${root}/some-vuetify-app
+#    - cd $TRAVIS_BUILD_DIR/some-vuetify-app
 #    - cp firebase.config.js.default firebase.config.js || true
 #    - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
 #    - npm i -f
@@ -347,7 +360,7 @@ jobs:
 ##    node_js: lts/*
 ##    name: vuetify
 ##    script:
-##      - cd ${root}/vuetify
+##      - cd $TRAVIS_BUILD_DIR/vuetify
 ##      - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
 ##      - npm i -f
 ##      - npm run predeploy;
@@ -357,7 +370,7 @@ jobs:
 #    node_js: lts/*
 #    name: vuetify
 #    script:
-#    - cd ${root}/vuetify
+#    - cd $TRAVIS_BUILD_DIR/vuetify
 #    - cp firebase.config.js.default firebase.config.js || true
 #    - echo "TODO:\ FIXME:\ npm i fails:\ https://github.com/angular/angular/issues/13935"
 #    - npm i -f
@@ -367,7 +380,7 @@ jobs:
 
   - stage: deploy
     env:
-      - SUB_PROJECT=component-04-ts-vue-cli
+      - SUB_PROJECT=component-05-vue-composition-api
       - secure: oP/muOICK9B+4eYo8V8AQJqJ0iqy2n9s2n+5XUJPDJh04PZdG/jRp5mpoHATdSqrCEoREuvP1HAww8mNCiZRjN1pMbKE6v6LvtuRYURpm3Uctnbgf6m3pA95upcf48TsHLPr30seQge0lwR39dx+PQ0bbsfywR81MzPu+gT2ExbxMg70MOOf2tILIGAPKkk/Zishf7an17VzgFDJZLLq8fZaKFbFE5jgA5OMU7lgSUrQadhXTgRWT6kUmt7pPByovLinzBZVl/wBbyoxcxF3HSNaLcUSgWXDTDfQHeRDblS78ERtQ+ywBEN9dPv9cwTrxgZcr5laAQjIJ22HNGyLT2gxodlxRs3awp7zY2aNsdcrnbNNSTh2gfZ2r3yd/CDkuNU46W5QsfLpvEgJlacle4JM91afCoYj2OFFSx09UHfp9kPbRwuXerhgIWuYGUwQ15dXR0csxxqLJYslDK8XucKGrPIxo8gi4+/cKeKLotR7b5VXEjdrZtRfnbWU4htYMcb+1nGItKmYyK2eFb4ShOhS2lXRhEGwzAOhn8C5MGKdABpaPLcBHcAyUpGFl76B4nRU4kXKyKPKBJoBs36eZMBYgsiKwZ8UD9id0WIHLAQInbXzvh4SbmClJV4SFwcIroKkGv+iQdRvFA21d0v1teYTHAeHot4bKVGVEaODP/M=
     name: GitHub pages deployment
     script: skip
