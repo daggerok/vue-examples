@@ -4,17 +4,17 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>
     </div>
-    <Clicker />
+    <ReactiveClicker />
     <router-view/>
   </div>
 </template>
 
 <script>
-  import Clicker from '@/components/Clicker';
+  import ReactiveClicker from '@/components/ReactiveClicker';
 
   export default {
     components: {
-      Clicker,
+      ReactiveClicker,
     },
   };
 </script>

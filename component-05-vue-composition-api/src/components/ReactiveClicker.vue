@@ -1,5 +1,5 @@
 <template>
-  <button @click="increment">{{ state.counter }}</button>
+  <button @click="this.increment">reactive: {{ state.counter }}</button>
 </template>
 
 <script>
