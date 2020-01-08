@@ -387,6 +387,7 @@ jobs:
     before_deploy:
     - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm i
     - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm run gh
+    - cp -Rf $TRAVIS_BUILD_DIR/$SUB_PROJECT/dist/index.html $TRAVIS_BUILD_DIR/$SUB_PROJECT/dist/404.html
     deploy:
       provider: pages
       skip-cleanup: true
