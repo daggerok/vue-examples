@@ -1,0 +1,29 @@
+{
+  "name": "vue-composition-api-tsx-example",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "gh": "cross-env BASE_HREF='/vue-examples/' npm run build",
+    "start": "pm2 start 'npm run serve' --name app",
+    "restart": "pm2 restart app",
+    "stop": "pm2 kill",
+    "logs": "pm2 logs"
+  },
+  "dependencies": {
+    "@vue/composition-api": "0.3.4",
+    "core-js": "3.6.2",
+    "vue": "2.6.11"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "4.1.2",
+    "@vue/cli-plugin-typescript": "4.1.2",
+    "@vue/cli-service": "4.1.2",
+    "babel-preset-vca-jsx": "0.3.4",
+    "cross-env": "6.0.3",
+    "pm2": "4.2.1",
+    "typescript": "3.7.4",
+    "vue-template-compiler": "2.6.11"
+  }
+}

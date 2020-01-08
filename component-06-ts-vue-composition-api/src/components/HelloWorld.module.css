@@ -1,0 +1,14 @@
+.listTitle {
+  margin: 40px 0 0;
+}
+.list {
+  list-style-type: none;
+  padding: 0;
+}
+.item {
+  display: inline-block;
+  margin: 0 10px;
+}
+.link {
+  color: #42b983;
+}

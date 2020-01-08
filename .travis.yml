@@ -39,6 +39,20 @@ jobs:
   include:
 
   - stage: test
+    name: component-06-ts-vue-composition-api
+    env:
+      - SUB_PROJECT=component-06-ts-vue-composition-api
+    before_script:
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm i -E
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm start
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm run logs &
+      - wait_for 8080
+    script:
+      - http :8080
+    after_script:
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm stop
+
+  - stage: test
     name: component-05-vue-composition-api
     env:
       - SUB_PROJECT=component-05-vue-composition-api
@@ -380,7 +394,7 @@ jobs:
 
   - stage: deploy
     env:
-      - SUB_PROJECT=component-05-vue-composition-api
+      - SUB_PROJECT=component-06-ts-vue-composition-api
       - secure: oP/muOICK9B+4eYo8V8AQJqJ0iqy2n9s2n+5XUJPDJh04PZdG/jRp5mpoHATdSqrCEoREuvP1HAww8mNCiZRjN1pMbKE6v6LvtuRYURpm3Uctnbgf6m3pA95upcf48TsHLPr30seQge0lwR39dx+PQ0bbsfywR81MzPu+gT2ExbxMg70MOOf2tILIGAPKkk/Zishf7an17VzgFDJZLLq8fZaKFbFE5jgA5OMU7lgSUrQadhXTgRWT6kUmt7pPByovLinzBZVl/wBbyoxcxF3HSNaLcUSgWXDTDfQHeRDblS78ERtQ+ywBEN9dPv9cwTrxgZcr5laAQjIJ22HNGyLT2gxodlxRs3awp7zY2aNsdcrnbNNSTh2gfZ2r3yd/CDkuNU46W5QsfLpvEgJlacle4JM91afCoYj2OFFSx09UHfp9kPbRwuXerhgIWuYGUwQ15dXR0csxxqLJYslDK8XucKGrPIxo8gi4+/cKeKLotR7b5VXEjdrZtRfnbWU4htYMcb+1nGItKmYyK2eFb4ShOhS2lXRhEGwzAOhn8C5MGKdABpaPLcBHcAyUpGFl76B4nRU4kXKyKPKBJoBs36eZMBYgsiKwZ8UD9id0WIHLAQInbXzvh4SbmClJV4SFwcIroKkGv+iQdRvFA21d0v1teYTHAeHot4bKVGVEaODP/M=
     name: GitHub pages deployment
     script: skip
