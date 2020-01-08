@@ -1,0 +1,36 @@
+{
+  "name": "vue-examples",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "gh": "cross-env BASE_HREF='/vue-examples/' npm run build",
+    "start": "pm2 start 'npm run dev' --name app",
+    "dev": "npm run serve",
+    "restart": "pm2 restart app",
+    "stop": "pm2 kill",
+    "logs": "pm2 logs"
+  },
+  "dependencies": {
+    "vue": "2.6.11",
+    "vue-class-component": "7.1.0",
+    "vue-property-decorator": "8.3.0",
+    "vue-router": "3.1.3",
+    "vuex": "3.1.2"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-router": "4.1.2",
+    "@vue/cli-plugin-typescript": "4.1.2",
+    "@vue/cli-plugin-vuex": "4.1.2",
+    "@vue/cli-service": "4.1.2",
+    "cross-env": "6.0.3",
+    "pm2": "4.2.1",
+    "typescript": "3.7.4",
+    "vue-template-compiler": "2.6.11"
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}
