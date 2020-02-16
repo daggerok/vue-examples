@@ -1,40 +1,32 @@
-env:
-  global:
-  - TERM=dumb
 notifications:
   email: false
 git:
   quiet: true
   depth: false
-language: node
+language: node_js
 node_js: lts/*
 python: 3.7
 os: linux
+arch: amd64
 addons:
   apt:
+    update: true
     packages:
+      - jq
       - curl
-      #- sudo
-      #- lsof
-      - python3-pip
-      #- fonts-liberation
-      #- libappindicator1
-      #- google-chrome-stable
+      - sudo
+      - lsof
+      - httpie
 install: true
 before_install:
-  #- export DISPLAY=:99.0
-  #- export CHROME_BIN=/usr/bin/google-chrome
+  - export DISPLAY=:99.0
   - |
     if [ ! -f ${HOME}/.local/daggerok/bash-functions/master/main.bash ] ; then
       mkdir -p ${HOME}/.local/daggerok/bash-functions/master ;
       curl -s https://raw.githubusercontent.com/daggerok/bash-functions/master/main.bash > ${HOME}/.local/daggerok/bash-functions/master/main.bash ;
     fi
     source ${HOME}/.local/daggerok/bash-functions/master/main.bash ;
-    stop_any 80 3000 5000 8080 5432
-  - |
-    export PATH=$HOME/.local/bin:$PATH
-    pip3 install --user --upgrade pip setuptools
-    pip install --user --upgrade httpie
+  - stop_any 80 3000 5000 8080 5432
 jobs:
   include:
 
