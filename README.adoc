@@ -1,4 +1,4 @@
-= vue-examples image:https://travis-ci.org/daggerok/vue-examples.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/vue-examples"] [![CI](https://github.com/daggerok/vue-examples/workflows/CI/badge.svg)](https://github.com/daggerok/vue-examples/actions)
+= vue-examples image:https://travis-ci.org/daggerok/vue-examples.svg?branch=master["Build Status", link="https://travis-ci.org/daggerok/vue-examples"] image:https://github.com/daggerok/vue-examples/workflows/CI/badge.svg["CI", link="https://github.com/daggerok/vue-examples/actions"]
 
 This repository is contains some Vue.js playground project examples
 
