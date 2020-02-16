@@ -1,0 +1,37 @@
+name: CI
+on: [push]
+jobs:
+  eaglejs-slideshow:
+    strategy:
+      matrix:
+        os: [ubuntu-latest]
+        nodejs-version: [12]
+        python-version: [3.8]
+    runs-on: ${{ matrix.os }}
+    name: eaglejs-slideshow (${{ matrix.os }} OS, python ${{ matrix.python-version }}, NodeJS ${{ matrix.nodejs-version }})
+    steps:
+      - name: Set up NodeJS ${{ matrix.nodejs-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.nodejs-version }}
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install / upgrade pip
+        run: python -m pip install --upgrade pip setuptools
+      - name: Install HTTPie
+        run: pip install --upgrade httpie
+      - name: Install required npm packages globally
+        run: npm install -g wait-port
+      - name: Clone git project
+        uses: actions/checkout@v2
+      - name: Install, run, wait and test
+        shell: bash
+        run: |
+          cd $GITHUB_WORKSPACE/eaglejs-slideshow && npm i
+          cd $GITHUB_WORKSPACE/eaglejs-slideshow && npm start
+          cd $GITHUB_WORKSPACE/eaglejs-slideshow && npm run logs &
+          wait-port 8080
+          http get :8080
+          cd $GITHUB_WORKSPACE/eaglejs-slideshow && npm stop

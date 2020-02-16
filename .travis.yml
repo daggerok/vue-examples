@@ -39,20 +39,6 @@ jobs:
   include:
 
   - stage: test
-    name: eaglejs-slideshow
-    env:
-      - SUB_PROJECT=eaglejs-slideshow
-    before_script:
-      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm i -E
-      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm start
-      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm run logs &
-      - wait_for 8080
-    script:
-      - http :8080
-    after_script:
-      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm stop
-
-  - stage: test
     name: component-06-ts-vue-composition-api
     env:
       - SUB_PROJECT=component-06-ts-vue-composition-api
@@ -219,14 +205,14 @@ jobs:
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
     - npm run build -- --report
 
-#  - stage: test
-#    name: nuxt-server-side-rendering
-#    script:
-#    - cd $TRAVIS_BUILD_DIR/nuxt-server-side-rendering
-#    - npm i
-#    - npm run predeploy;
-#    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-#    - npm run build -- --report
+  - stage: test
+    name: nuxt-server-side-rendering
+    script:
+    - cd $TRAVIS_BUILD_DIR/nuxt-server-side-rendering
+    - npm i
+    - npm run predeploy;
+    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+    - npm run build -- --report
 
 #  - stage: test
 #    node_js: lts/*
