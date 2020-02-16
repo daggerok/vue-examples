@@ -39,6 +39,20 @@ jobs:
   include:
 
   - stage: test
+    name: eaglejs-slideshow
+    env:
+      - SUB_PROJECT=eaglejs-slideshow
+    before_script:
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm i -E
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm start
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm run logs &
+      - wait_for 8080
+    script:
+      - http :8080
+    after_script:
+      - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm stop
+
+  - stage: test
     name: component-06-ts-vue-composition-api
     env:
       - SUB_PROJECT=component-06-ts-vue-composition-api
@@ -205,14 +219,14 @@ jobs:
     - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
     - npm run build -- --report
 
-  - stage: test
-    name: nuxt-server-side-rendering
-    script:
-    - cd $TRAVIS_BUILD_DIR/nuxt-server-side-rendering
-    - npm i
-    - npm run predeploy;
-    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
-    - npm run build -- --report
+#  - stage: test
+#    name: nuxt-server-side-rendering
+#    script:
+#    - cd $TRAVIS_BUILD_DIR/nuxt-server-side-rendering
+#    - npm i
+#    - npm run predeploy;
+#    - if [ -f npm-debug.log ]; then cat npm-debug.log; fi;
+#    - npm run build -- --report
 
 #  - stage: test
 #    node_js: lts/*
@@ -394,23 +408,24 @@ jobs:
 
   - stage: deploy
     env:
-      - SUB_PROJECT=component-06-ts-vue-composition-api
+      - SUB_PROJECT=eaglejs-slideshow
+      #- SUB_PROJECT=component-06-ts-vue-composition-api
       - secure: oP/muOICK9B+4eYo8V8AQJqJ0iqy2n9s2n+5XUJPDJh04PZdG/jRp5mpoHATdSqrCEoREuvP1HAww8mNCiZRjN1pMbKE6v6LvtuRYURpm3Uctnbgf6m3pA95upcf48TsHLPr30seQge0lwR39dx+PQ0bbsfywR81MzPu+gT2ExbxMg70MOOf2tILIGAPKkk/Zishf7an17VzgFDJZLLq8fZaKFbFE5jgA5OMU7lgSUrQadhXTgRWT6kUmt7pPByovLinzBZVl/wBbyoxcxF3HSNaLcUSgWXDTDfQHeRDblS78ERtQ+ywBEN9dPv9cwTrxgZcr5laAQjIJ22HNGyLT2gxodlxRs3awp7zY2aNsdcrnbNNSTh2gfZ2r3yd/CDkuNU46W5QsfLpvEgJlacle4JM91afCoYj2OFFSx09UHfp9kPbRwuXerhgIWuYGUwQ15dXR0csxxqLJYslDK8XucKGrPIxo8gi4+/cKeKLotR7b5VXEjdrZtRfnbWU4htYMcb+1nGItKmYyK2eFb4ShOhS2lXRhEGwzAOhn8C5MGKdABpaPLcBHcAyUpGFl76B4nRU4kXKyKPKBJoBs36eZMBYgsiKwZ8UD9id0WIHLAQInbXzvh4SbmClJV4SFwcIroKkGv+iQdRvFA21d0v1teYTHAeHot4bKVGVEaODP/M=
     name: GitHub pages deployment
     script: skip
-    before_deploy:
-    - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm i
-    - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm run gh
-    - cp -Rf $TRAVIS_BUILD_DIR/$SUB_PROJECT/dist/index.html $TRAVIS_BUILD_DIR/$SUB_PROJECT/dist/404.html
     deploy:
+      on:
+        branch: master
       provider: pages
       skip-cleanup: true
       keep-history: true
       target_branch: gh-pages
       github-token: "$GITHUB_TOKEN"
       local-dir: $TRAVIS_BUILD_DIR/$SUB_PROJECT/dist
-      on:
-        branch: master
+    before_deploy:
+    - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm i
+    - cd $TRAVIS_BUILD_DIR/$SUB_PROJECT && npm run gh
+    - cp -Rf $TRAVIS_BUILD_DIR/$SUB_PROJECT/dist/index.html $TRAVIS_BUILD_DIR/$SUB_PROJECT/dist/404.html
 
 #  - stage: deploy
 #    jdk: openjdk11

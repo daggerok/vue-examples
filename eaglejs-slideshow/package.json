@@ -1,0 +1,46 @@
+{
+  "name": "eaglejs-slideshow",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "gh": "cross-env BASE_HREF='/vue-examples/' npm run build",
+    "start": "pm2 start 'npm run serve' --name app",
+    "restart": "pm2 restart app",
+    "stop": "pm2 kill",
+    "logs": "pm2 logs"
+  },
+  "dependencies": {
+    "animate.css": "3.7.2",
+    "core-js": "3.6.4",
+    "eagle.js": "0.6.1",
+    "vue": "2.6.11"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "4.2.2",
+    "@vue/cli-service": "4.2.2",
+    "cross-env": "7.0.0",
+    "pm2": "4.2.3",
+    "sass": "1.25.0",
+    "sass-loader": "8.0.2",
+    "vue-template-compiler": "2.6.11"
+  },
+  "keywords": [
+    "vue",
+    "eagle.js",
+    "aminate.css",
+    "cross-env",
+    "sass",
+    "pm2"
+  ],
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "babel": {
+    "presets": [
+      "@vue/cli-plugin-babel/preset"
+    ]
+  }
+}
