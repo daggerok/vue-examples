@@ -17,7 +17,7 @@
     "deploy": "gh-pages -d ./dist -b gh-pages -m \"Github Pages $(date +%Y-%m-%d) deployment\""
   },
   "dependencies": {
-    "jquery": "3.4.1",
+    "jquery": "3.5.0",
     "material-design-icons": "3.0.1",
     "materialize-css": "0.100.2",
     "vue": "2.5.17",
